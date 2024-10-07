@@ -13,9 +13,13 @@ class UserController extends Controller
     }
 
     public function index(){
+        return view('user.index');
+    }
+    
+    public function edit(){
 
             $user = Auth::user();
-            return view('user.index', compact('user'));
+            return view('user.edit-profile', compact('user'));
 
 
         }

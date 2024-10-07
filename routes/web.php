@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('users/add', [UserController::class, 'add'])->name('users.add');
     Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
 
 });
 
