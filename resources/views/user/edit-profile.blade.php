@@ -6,15 +6,14 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="">
    <meta name="author" content="">
-   <link rel="icon" type="image/png" href="assets/img/fav.png">
    <title>Edit - Profile</title>
    <!-- Slick Slider -->
-   <link rel="stylesheet" type="text/css" href="assets/vendor/slick/slick.min.css" />
-   <link rel="stylesheet" type="text/css" href="assets/vendor/slick/slick-theme.min.css" />
+   <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}" />
    <!-- Feather Icon-->
-   <link href="assets/vendor/icons/feather.css" rel="stylesheet" type="text/css">
+   <link href="{{asset('vendor/icons/feather.css')}}" rel="stylesheet" type="text/css">
    <!-- Bootstrap core CSS -->
-   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
    <!-- Custom styles for this template -->
    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
    <link href="{{ asset('css/style.css') }}"  rel="stylesheet">
