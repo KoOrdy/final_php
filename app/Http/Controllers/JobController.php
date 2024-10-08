@@ -12,6 +12,13 @@ class JobController extends Controller
         return view('jobs.create');
     }
 
+    public function index()
+    {
+        $jobs = Job::all();
+        return view('job.jobs', compact('jobs'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -28,6 +35,6 @@ class JobController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('jobs.index')->with('success', 'Job created successfully.');
+        return redirect()->route('jobs.index')->with('success', 'Job posted successfully.');
     }
 }

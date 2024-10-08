@@ -95,7 +95,7 @@
             <aside class="col-md-4">
                 <div class="mb-3 border rounded bg-white profile-box text-center w-10">
                     <div class="p-4 d-flex align-items-center">
-                        <img src="{{asset('/storage/' .$user->profile_picture)}}" width="100px" class="img-fluid rounded-circle" alt="Responsive image">
+                        <img src="{{asset( '/storage/' .$user->profile_picture)}}" width="100px" class="img-fluid rounded-circle" alt="Responsive image">
                         <div class="p-4">
                             <form action="{{ url('users/update-image/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf

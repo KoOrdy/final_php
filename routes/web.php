@@ -32,12 +32,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
     Route::get('users/profile', [UserController::class, 'profile'])->name('users.profile');
-    Route::get('users/jobs', [UserController::class, 'jobs'])->name('users.jobs');
+    
     Route::get('users/application', [UserController::class, 'application'])->name('users.application');
-    Route::get('/users/myjobs', [UserController::class, 'myjobs'])->name('users.myjobs');
 
-    Route::get('/users/myjobs/create', [JobController::class, 'create'])->name('jobs.create');
-    // Route::get('/users/myjobs', [JobController::class, 'store'])->name('jobs.store');
+
+    Route::post('/users/myjobs/store', [JobController::class, 'store'])->name('myjobs.store');
+    Route::get('/users/myjobs', [JobController::class, 'create'])->name('myjobs');
+    Route::get('users/jobs', [UserController::class, 'jobs'])->name('jobs');
 });
 
 require __DIR__.'/auth.php';
