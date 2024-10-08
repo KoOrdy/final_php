@@ -5,26 +5,26 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
       <meta name="author" content="">
-      <link rel="icon" type="image/png" href="assets/img/fav.png">
       <title>Posted Jobs</title>
       <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="assets/vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="assets/vendor/slick/slick-theme.min.css"/>
+      <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}"/>
+      <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}"/>
       <!-- Feather Icon-->
-      <link href="assets/vendor/icons/feather.css" rel="stylesheet" type="text/css">
+      <link href="{{asset('vendor/icons/feather.css')}}" rel="stylesheet" type="text/css">
       <!-- Bootstrap core CSS -->
-      <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
       <!-- Custom styles for this template -->
-      <link href="assets/css/style.css" rel="stylesheet">
-      <link href="assets/css/custom.css" rel="stylesheet">
+      <link href="{{asset('css/style.css')}}" rel="stylesheet">
+      <link href="{{asset('css/custom.css')}}" rel="stylesheet">
    </head>
    <body>
       <!-- Navigation -->
       <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
          <div class="container">
-            <a class="navbar-brand mr-2" href="index.html">
-               <img src="assets/img/logo.gif" alt="" style="width: 50px; height: auto;">
+            <a class="navbar-brand mr-2" href="{{url('/users')}}">
+               <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
            </a>
+           
             
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -47,26 +47,26 @@
                   </div>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="jobs.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
+                  <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="jobs.html"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
+                  <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
                </li>
-               <li class="nav-item"></li>
-                  <a class="nav-link" href="job-profile.html"><i class="feather-message-square mr-2"></i><span class="d-none d-lg-inline">Application</span></a>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
                </li>
               
                
                <!-- Nav Item - User Information -->
                <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                   <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="assets/img/66.png">
+                  <img class="img-profile rounded-circle" src="{{asset('img/66.png')}}">
                   </a>
                   <!-- Dropdown - User Information -->
                   <div class="dropdown-menu dropdown-menu-right shadow-sm">
                      <div class="p-3 d-flex align-items-center">
                         <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="assets/img/66.png" alt="">
+                           <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
                            <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
@@ -75,8 +75,8 @@
                         </div>
                      </div>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="profile.html"><i class="feather-edit mr-1"></i> My Account</a>
-                     <a class="dropdown-item" href="edit-profile.html"><i class="feather-user mr-1"></i> Edit Profile</a>
+                     <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
+                     <a class="dropdown-item" href="{{url('/users/edit-profile')}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
                   </div>
@@ -256,9 +256,9 @@
          </div>
       </div>
       <!-- Bootstrap core JavaScript -->
-      <script src="assets/vendor/jquery/jquery.min.js"></script>
-      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+      <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
       <!-- Custom scripts for all pages-->
-      <script src="assets/js/osahan.js"></script>
+      <script src="{{asset('js/osahan.js')}}"></script>
    </body>
 </html>

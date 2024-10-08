@@ -23,7 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::get('users/add', [UserController::class, 'add'])->name('users.add');
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
-
+    Route::get('users/profile', [UserController::class, 'profile'])->name('users.profile');
+    Route::get('users/jobs', [UserController::class, 'jobs'])->name('users.jobs');
+    Route::get('users/application', [UserController::class, 'application'])->name('users.application');
+    Route::get('users/myjobs', [UserController::class, 'myjobs'])->name('users.myjobs');
 });
 
 require __DIR__.'/auth.php';

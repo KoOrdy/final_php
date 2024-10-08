@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="">
       <meta name="author" content="">
-      <title>Application</title>
+      <title>My Jobs</title>
       <!-- Slick Slider -->
       <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}"/>
       <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}"/>

@@ -21,7 +21,7 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
          <div class="container">
-            <a class="navbar-brand mr-2" href="index.html">
+            <a class="navbar-brand mr-2" href="{{url('/users')}}">
                <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
            </a>
            
@@ -47,13 +47,13 @@
                   </div>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="jobs.html"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
+                  <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="jobs.html"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
+                  <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
                </li>
-               <li class="nav-item"></li>
-                  <a class="nav-link" href="job-profile.html"><i class="feather-message-square mr-2"></i><span class="d-none d-lg-inline">Application</span></a>
+               <li class="nav-item">
+                  <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
                </li>
               
                
@@ -75,7 +75,7 @@
                         </div>
                      </div>
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="profile.html"><i class="feather-edit mr-1"></i> My Account</a>
+                     <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                      <a class="dropdown-item" href="{{url('/users/edit-profile')}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
@@ -160,7 +160,7 @@
                      </div>
                      
                      <div class="overflow-hidden border-top">
-                        <a class="font-weight-bold p-3 d-block" href="profile.html"> View my profile </a>
+                        <a class="font-weight-bold p-3 d-block" href="{{url('/users/profile')}}"> View my profile </a>
                      </div>
                   </div>
                </aside>
