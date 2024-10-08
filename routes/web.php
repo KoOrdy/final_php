@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JobController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('users/profile', [UserController::class, 'profile'])->name('users.profile');
     Route::get('users/jobs', [UserController::class, 'jobs'])->name('users.jobs');
     Route::get('users/application', [UserController::class, 'application'])->name('users.application');
-    Route::get('users/myjobs', [UserController::class, 'myjobs'])->name('users.myjobs');
+    Route::get('/users/myjobs', [UserController::class, 'myjobs'])->name('users.myjobs');
+
+    Route::get('/users/myjobs/create', [JobController::class, 'create'])->name('jobs.create');
+    // Route::get('/users/myjobs', [JobController::class, 'store'])->name('jobs.store');
 });
 
 require __DIR__.'/auth.php';

@@ -84,176 +84,88 @@
             </ul>
          </div>
       </nav>
-      <div class="py-4">
+
+      <div class="bg-white shadow-sm border-bottom">
          <div class="container">
             <div class="row">
-               <!-- Main Content -->
-               <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                  <div class="box shadow-sm border rounded bg-white mb-3 osahan-share-post">
-                    
-                     <ul class="nav border-bottom osahan-line-tab" id="myTab" role="tablist">
-                        <li class="nav-item">
-                           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Category</a>
-                        </li>
-                       
-                        
-                     </ul>
-                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                           <div class="p-3 job-tags">
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">All</button>
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">Sales</button>
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">Design</button>
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">Products</button>
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">Developer</button>
-                              <button type="button" class="btn btn-outline-secondary btn-sm mr-1">Business Analyst</button>
-                           </div>
-                           <div class="p-3 border-top">
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <a href="job-profile.html">
-                                       <div class="border job-item mb-3">
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <h6 class="font-weight-bold text-dark mb-0 text-truncate">UI/UX designer</h6>
-                                                <div class="text-truncate text-primary">Envato</div>
-                                                <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
-                                             </div>
-                                          </div>
-
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <div class="small text-gray-500"><i class="feather-edit"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit cumque ipsa dignissimos vero itaque? Illo blanditiis odio explicabo nobis.</div>
-                                             </div>
-                                          </div>
-                                          
-                                          <div class="p-3 job-item-footer">
-                                             <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                                             <div>
-                                                <button type="button" class="btn btn-primary"> &nbsp; Apply &nbsp; </button>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <a href="job-profile.html">
-                                       <div class="border job-item mb-3">
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <h6 class="font-weight-bold text-dark mb-0 text-truncate">UI/UX designer</h6>
-                                                <div class="text-truncate text-primary">Envato</div>
-                                                <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
-                                             </div>
-                                          </div>
-
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <div class="small text-gray-500"><i class="feather-edit"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit cumque ipsa dignissimos vero itaque? Illo blanditiis odio explicabo nobis.</div>
-                                             </div>
-                                          </div>
-                                          
-                                          <div class="p-3 job-item-footer">
-                                             <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                                             <div>
-                                                <button type="button" class="btn btn-primary"> &nbsp; Apply &nbsp; </button>
-                                             </div>
-                                          </div>
-
-                                          
-                                       </div>
-                                    </a>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <a href="job-profile.html">
-                                       <div class="border job-item mb-3">
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <h6 class="font-weight-bold text-dark mb-0 text-truncate">UI/UX designer</h6>
-                                                <div class="text-truncate text-primary">Envato</div>
-                                                <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
-                                             </div>
-                                          </div>
-
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <div class="small text-gray-500"><i class="feather-edit"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit cumque ipsa dignissimos vero itaque? Illo blanditiis odio explicabo nobis.</div>
-                                             </div>
-                                          </div>
-                                          
-                                          <div class="p-3 job-item-footer">
-                                             <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                                             <div>
-                                                <button type="button" class="btn btn-primary"> &nbsp; Apply &nbsp; </button>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <a href="job-profile.html">
-                                       <div class="border job-item mb-3">
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <h6 class="font-weight-bold text-dark mb-0 text-truncate">UI/UX designer</h6>
-                                                <div class="text-truncate text-primary">Envato</div>
-                                                <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
-                                             </div>
-                                          </div>
-
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <div class="small text-gray-500"><i class="feather-edit"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit cumque ipsa dignissimos vero itaque? Illo blanditiis odio explicabo nobis.</div>
-                                             </div>
-                                          </div>
-                                          
-                                          <div class="p-3 job-item-footer">
-                                             <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                                             <div>
-                                                <button type="button" class="btn btn-primary"> &nbsp; Apply &nbsp; </button>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <a href="job-profile.html">
-                                       <div class="border job-item mb-3">
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <h6 class="font-weight-bold text-dark mb-0 text-truncate">UI/UX designer</h6>
-                                                <div class="text-truncate text-primary">Envato</div>
-                                                <div class="small text-gray-500"><i class="feather-map-pin"></i> India, Punjab</div>
-                                             </div>
-                                          </div>
-
-                                          <div class="d-flex align-items-center p-3 job-item-header">
-                                             <div class="overflow-hidden mr-2">
-                                                <div class="small text-gray-500"><i class="feather-edit"></i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit cumque ipsa dignissimos vero itaque? Illo blanditiis odio explicabo nobis.</div>
-                                             </div>
-                                          </div>
-                                          
-                                          <div class="p-3 job-item-footer">
-                                             <small class="text-gray-500"><i class="feather-clock"></i> Posted 3 Days ago</small>
-                                             <div>
-                                                <button type="button" class="btn btn-primary"> &nbsp; Apply &nbsp; </button>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
+               <div class="col-md-12">
+                  <div class="align-items-center py-3">
+                     <div class="profile-center">
+                        <h2 class="font-weight-bold text-dark mb-1 mt-0 text-center">Jobs</h2>
                      </div>
                   </div>
-               </main>
+               </div>
             </div>
          </div>
+      </div>
+
+      <div class="py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Main Content -->
+   <main class="col-lg-8 col-md-10 col-12">
+         <div class="box shadow-lg rounded bg-white mb-4 osahan-share-post">
+
+            <ul class="nav border-bottom osahan-line-tab" id="myTab" role="tablist">
+               <li class="nav-item">
+                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Category</a>
+               </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                     <div class="p-3 job-tags">
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">All</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">Sales</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">Design</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">Products</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">Developer</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm mr-1">Business Analyst</button>
+                     </div>
+                     <div class="p-3 border-top">
+                        <div class="row">
+                           <!-- Job Item Start -->
+                              
+                              
+                           <div class="col-md-6 mb-4">
+                                 <a  class="text-decoration-none">
+                                    <div class="border rounded bg-light job-item p-3">
+                                       <div class="d-flex align-items-center mb-2">
+                                             <div class="mr-3">
+                                                <h6 class="font-weight-bold text-dark mb-0">Title</h6>
+                                                <div class="text-primary">Company</div>
+                                                <div class="text-muted small"><i class="feather-map-pin"></i> Location</div>
+                                             </div>
+                                       </div>
+                                       <div class="text-muted small mb-2">
+                                             <i class="feather-edit"></i> Description
+                                       </div>
+                                       <div class="d-flex justify-content-end">
+                                          <a href="{{url('/users/application')}}">
+                                             <button type="button" class="btn btn-primary btn-sm">Apply</button>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </a>
+                           </div>
+
+
+
+
+                           <!-- Job Item End -->
+                        </div>
+                     </div>
+               </div>
+            </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
       </div>
       <!-- Bootstrap core JavaScript -->
       <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
