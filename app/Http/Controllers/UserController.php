@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -29,11 +31,64 @@ class UserController extends Controller
         }
         public function update(Request $request, int $id){
 
-            echo 'done';
+            $request->validate([
+                'name' => ['required','string', 'max:255' ],
+                'email' => ['required','string','unique:users,email,' . $id, 'max:255'],
+                'birthdate' => ['required','date'],
+                'gender' => ['required','string'],
+                'phone_number' => ['required','unique:users,phone_number,' . $id,'string'],
+                'bio' => ['required','string'],
+            ]);
+
+            $data =[
+              'name' => $request['name'],
+              'email' => $request['email'],
+              'birthdate' => $request['birthdate'],
+              'gender' => $request['gender'],
+              'phone_number' => $request['phone_number'],
+              'bio' => $request['bio'],
+            ];
+
+            if($request->has('password')){
+                $data['password'] = bcrypt($request['password']);
+            }
+
+            $user=User::find($id);
+
+            $user->update($data);
+
+            return redirect()->back()->with('success', 'User Updated Successfully!');
         }
-    
-    
-   
+
+    public function deleteImage(int $id){
+        $user=User::find($id);
+        if($user){
+            Storage::disk('public')->delete($user->profile_picture);
+            $user->update(['profile_picture' => null]);
+        }
+        return redirect()->back()->with('success', 'image Deleted Successfully!');
+    }
+
+    public function updateImage(Request $request, int $id)
+    {
+
+        $request->validate([
+            'profile_picture' => ['required','image','mimes:jpeg,png,jpg,gif,svg'],
+        ]);
+
+        if($request->hasFile('profile_picture')){
+
+            $image = $request->file('profile_picture');
+
+            $data['profile_picture'] = $image->storeAs('/img',time(). '.' . $image->extension(),'public');
+        }
+
+        $user=User::find($id);
+        $user->update($data);
+        return redirect()->back()->with('success', 'Image Updated Successfully!');
+
+    }
+
 
     public function profile(){
         $user = Auth::user();

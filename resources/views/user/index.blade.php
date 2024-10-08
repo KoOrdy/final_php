@@ -24,8 +24,8 @@
             <a class="navbar-brand mr-2" href="{{url('/users')}}">
                <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
            </a>
-           
-            
+
+
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                <li class="nav-item dropdown no-arrow d-sm-none">
@@ -55,8 +55,8 @@
                <li class="nav-item">
                   <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
                </li>
-              
-               
+
+
                <!-- Nav Item - User Information -->
                <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                   <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,12 +89,13 @@
             <div class="row">
                <!-- Main Content -->
                <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+
                   <div class="box shadow-sm border rounded bg-white mb-3 osahan-share-post">
                      <ul class="nav nav-justified border-bottom osahan-line-tab" id="myTab" role="tablist">
                         <li class="nav-item">
                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="feather-edit"></i> Share an update</a>
                         </li>
-                        
+
                      </ul>
                      <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -146,10 +147,10 @@
                         <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> </a>
                         <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i> </a>
                      </div>
-                    
+
                   </div>
-                  
-                 
+
+
                </main>
                <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
                   <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
@@ -158,13 +159,13 @@
                         <h5 class="font-weight-bold text-dark mb-1 mt-4">Gurdeep Osahan</h5>
                         <p class="mb-0 text-muted">UI / UX Designer</p>
                      </div>
-                     
+
                      <div class="overflow-hidden border-top">
                         <a class="font-weight-bold p-3 d-block" href="{{url('/users/profile')}}"> View my profile </a>
                      </div>
                   </div>
                </aside>
-               
+
             </div>
          </div>
       </div>

@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/edit-profile/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/update-profile/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::get('users/delete-image/{id}', [UserController::class, 'deleteImage'])->name('users.deleteImage');
+    Route::post('users/update-image/{id}', [UserController::class, 'updateImage'])->name('users.updateImage');
 
 
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
