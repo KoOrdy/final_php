@@ -22,7 +22,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('users/add', [UserController::class, 'add'])->name('users.add');
     Route::get('users', [UserController::class, 'index'])->name('users.index');
-    Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('users/edit-profile/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('users/update-profile/{id}', [UserController::class, 'update'])->name('users.update');
+
 
 });
 

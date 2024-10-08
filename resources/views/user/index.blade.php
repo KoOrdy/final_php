@@ -76,7 +76,7 @@
                      </div>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="profile.html"><i class="feather-edit mr-1"></i> My Account</a>
-                     <a class="dropdown-item" href="{{url('/users/edit-profile')}}"><i class="feather-user mr-1"></i> Edit Profile</a>
+                     <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
                   </div>
