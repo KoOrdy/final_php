@@ -18,7 +18,7 @@ class JobController extends Controller
             'job_title' => 'required|string|max:255',
             'company' => 'required|string|max:255',
             'location' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
         ]);
 
         Job::create([

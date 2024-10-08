@@ -199,8 +199,8 @@
                            @csrf
 
                            <div class="form-group">
-                              <label for="job-title" class="font-weight-bold">Job Title</label>
-                              <input type="text" class="form-control rounded-pill" id="job-title" placeholder="Enter job title" class="form-control" required>
+                              <label for="job_title" class="font-weight-bold">Job Title</label>
+                              <input type="text" class="form-control rounded-pill" id="job_title" placeholder="Enter job title" class="form-control" required>
                            </div>
                            <div class="form-group">
                               <label for="company" class="font-weight-bold">Company</label>
