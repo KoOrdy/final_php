@@ -29,10 +29,10 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'profile_picture'=>fake()->imageUrl,
-            'bio' => $this->faker->paragraph(),
-            'phone_number' => $this->faker->phoneNumber(),
-            'birthdate' => $this->faker->date('Y-m-d', '2000-01-01'),
-            'gender' => $this->faker->randomElement(['Male', 'Female', 'Other']),
+            'bio' => fake()->paragraph(),
+            'phone_number' => fake()->phoneNumber(),
+            'birthdate' => fake()->date('Y-m-d', '2020-01-01'),
+            'gender' => fake()->randomElement(['male', 'female']),
             'remember_token' => Str::random(10),
         ];
     }

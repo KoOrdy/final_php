@@ -28,8 +28,8 @@
             <a class="navbar-brand mr-2" href="{{url('/users')}}">
                <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
            </a>
-           
-            
+
+
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                <li class="nav-item dropdown no-arrow d-sm-none">
@@ -59,8 +59,8 @@
                <li class="nav-item">
                   <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
                </li>
-              
-               
+
+
                <!-- Nav Item - User Information -->
                <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                   <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,21 +93,38 @@
          <div class="row">
             <!-- Main Content -->
             <aside class="col-md-4">
-               <div class="mb-3 border rounded bg-white profile-box text-center w-10">
-                  <div class="p-4 d-flex align-items-center">
-                     <img src="{{asset($user->profile_picture)}}" width="100px" class="img-fluid rounded-circle" alt="Responsive image">
-                     <div class="p-4">
-                        <label data-toggle="tooltip" data-placement="top" data-original-title="Upload New Picture"
-                           class="btn btn-info m-0" for="fileAttachmentBtn">
-                           <i class="feather-image"></i>/////update
-                           <input id="fileAttachmentBtn" name="file-attachment" type="file" class="d-none">
-                        </label>
-                        <button data-toggle="tooltip" data-placement="top" data-original-title="Delete" type="submit"
-                           class="btn btn-danger"><i class="feather-trash-2"></i></button> ///////delete
-                     </div>
-                  </div>
-               </div>
-               <div class="border rounded bg-white mb-3">
+                <div class="mb-3 border rounded bg-white profile-box text-center w-10">
+                    <div class="p-4 d-flex align-items-center">
+                        <img src="{{asset('/storage/' .$user->profile_picture)}}" width="100px" class="img-fluid rounded-circle" alt="Responsive image">
+                        <div class="p-4">
+                            <form action="{{ url('users/update-image/'.$user->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex align-items-center">
+                                    <!-- Update Button with File Input -->
+                                    <label data-toggle="tooltip" data-placement="top" data-original-title="Upload New Picture"
+                                           class="btn btn-info m-0" for="fileAttachmentBtn">
+                                        <i class="feather-image"></i> Update
+                                        <input id="fileAttachmentBtn" name="profile_picture" type="file" class="d-none" required>
+                                    </label>
+
+                                    <div class="overflow-hidden text-center p-3">
+                                        <button type="submit" name="action" value="update" class="font-weight-bold btn btn-light rounded p-3 d-block">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <br>
+                            <a href="{{ url('users/delete-image/'.$user->id) }}" data-toggle="tooltip" data-placement="top"
+                               data-original-title="Delete" class="btn btn-danger">
+                                <i class="feather-trash-2"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="border rounded bg-white mb-3">
                </div>
 
             </aside>
@@ -118,7 +135,22 @@
                          <p class="mb-0 mt-0 small">Lorem ipsum dolor sit amet, consecteturs.</p>
                      </div>
                      <div class="box-body p-3">
+                         @if ($errors->any())
+                             <div class="alert alert-danger">
+                                 <ul>
+                                     @foreach ($errors->all() as $error)
+                                         <li>{{ $error }}</li>
+                                     @endforeach
+                                 </ul>
+                             </div>
+                         @endif
                          <form class="js-validate" novalidate="novalidate" action="{{url('users/update-profile/'.$user->id)}}" method="POST">
+
+                             @if(session('success'))
+                                 <p class="alert alert-success">
+                                     {{session('success')}}
+                                 </p>
+                             @endif
 
                              @csrf
                              @method('PUT')
@@ -128,7 +160,7 @@
                                      <div class="js-form-message">
                                          <label id="nameLabel" class="form-label">Name<span class="text-danger">*</span></label>
                                          <div class="form-group">
-                                             <input type="text" class="form-control" name="name" value="{{$user->name}}"
+                                             <input type="text" class="form-control" name="name" value="{{old('name',$user->name)}}"
                                                     placeholder="Enter your name" aria-label="Enter your name" required
                                                     aria-describedby="nameLabel" data-msg="Please enter your name."
                                                     data-error-class="u-has-error" data-success-class="u-has-success">
@@ -141,7 +173,7 @@
                                      <div class="js-form-message">
                                          <label id="usernameLabel" class="form-label">Email<span class="text-danger">*</span></label>
                                          <div class="form-group">
-                                             <input type="email" class="form-control" name="email" value="{{$user->email}}"
+                                             <input type="email" class="form-control" name="email" value="{{old('email',$user->email)}}"
                                                     placeholder="Enter your email" required
                                                     aria-describedby="usernameLabel" data-msg="Please enter your email."
                                                     data-error-class="u-has-error" data-success-class="u-has-success">
@@ -156,7 +188,7 @@
                                      <div class="js-form-message">
                                          <div class="form-group">
                                              <input type="date" class="form-control" name="birthdate" required
-                                                    value="{{$user->birthdate}}" data-msg="Please select your birth date."
+                                                    value="{{old('birthdate',$user->birthdate)}}" data-msg="Please select your birth date."
                                                     data-error-class="u-has-error" data-success-class="u-has-success">
                                          </div>
                                      </div>
@@ -168,9 +200,9 @@
                                              <select class="form-control custom-select" id="gender" name="gender" required
                                                      data-msg="Please select your gender." data-error-class="u-has-error"
                                                      data-success-class="u-has-success">
-                                                 <option value="" disabled>{{$user->gender}}</option>
-                                                 <option value="male">Male</option>
-                                                 <option value="female">Female</option>
+                                                 <option value="" disabled>{{old('gender',$user->gender)}}</option>
+                                                 <option value="male">male</option>
+                                                 <option value="female">female</option>
                                              </select>
                                          </div>
                                      </div>
@@ -182,7 +214,7 @@
                                      <div class="js-form-message">
                                          <label id="phoneNumberLabel" class="form-label">Phone number<span class="text-danger">*</span></label>
                                          <div class="form-group">
-                                             <input class="form-control" type="tel" name="phone_number" value="{{$user->phone_number}}"
+                                             <input class="form-control" type="tel" name="phone_number" value="{{old('phone_number',$user->phone_number)}}"
                                                     placeholder="Enter your phone number" required
                                                     aria-describedby="phoneNumberLabel" data-msg="Please enter a valid phone number."
                                                     data-error-class="u-has-error" data-success-class="u-has-success">
@@ -193,18 +225,31 @@
 
                              <!-- Bio Section -->
                              <div class="form-group mb-4">
-                                 <label class="mb-1">BIO</label>
+                                 <label class="mb-1">BIO<span class="text-danger">*</span></label>
                                  <div class="position-relative">
-                        <textarea class="form-control" rows="4" name="bio"
-                                  placeholder="Enter Bio">{{$user->bio}}</textarea>
+                                    <textarea class="form-control" rows="4" name="bio"
+                                  placeholder="Enter Bio">{{old('bio',$user->bio)}}</textarea>
                                  </div>
                              </div>
                              <!-- End Bio Section -->
-
-                             <div class="overflow-hidden text-center p-3">
+                             <div class="row">
+                                 <div class="col-sm-6 mb-2">
+                                     <div class="js-form-message">
+                                         <label id="passwordLabel" class="form-label">Password<span class="text-danger">*</span></label>
+                                         <div class="form-group">
+                                             <input type="password" class="form-control" name="password" placeholder="Enter your password"
+                                                    aria-describedby="passwordLabel" data-msg="Please enter your password."
+                                                    data-error-class="u-has-error" data-success-class="u-has-success" required>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="overflow-hidden text-center p-3">
                                  <button type="submit" name="action" value="update" class="font-weight-bold btn btn-light rounded p-3 d-block">
                                      Save
                                  </button>
+                                </div>
                              </div>
                          </form>
                      </div>
@@ -218,9 +263,9 @@
                         </p>
                      </div>
                      <div class="box-body px-3 pt-3 pb-0">
-                        
+
                         /////////////////////////////
-                        
+
                      </div>
                   </div>
              </main>
