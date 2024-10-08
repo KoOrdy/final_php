@@ -99,6 +99,7 @@
                         <div class="p-4">
                             <form action="{{ url('users/update-image/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('put')
                                 <div class="d-flex align-items-center">
                                     <!-- Update Button with File Input -->
                                     <label data-toggle="tooltip" data-placement="top" data-original-title="Upload New Picture"

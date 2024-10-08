@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('users/edit-profile/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/update-profile/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('users/delete-image/{id}', [UserController::class, 'deleteImage'])->name('users.deleteImage');
-    Route::post('users/update-image/{id}', [UserController::class, 'updateImage'])->name('users.updateImage');
+    Route::put('users/update-image/{id}', [UserController::class, 'updateImage'])->name('users.updateImage');
 
 
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::post('/users/myjobs/store', [JobController::class, 'store'])->name('myjobs.store');
-    Route::get('/users/myjobs', [JobController::class, 'create'])->name('myjobs');
+    Route::get('/users/myjobs', [UserController::class, 'myjobs'])->name('myjobs');
     Route::get('users/jobs', [UserController::class, 'jobs'])->name('jobs');
 });
 
