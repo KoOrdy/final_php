@@ -70,13 +70,13 @@
                            <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
-                           <div class="text-truncate">Gurdeep Osahan</div>
-                           <div class="small text-gray-500">UI/UX Designer</div>
+                           <div class="text-truncate">{{$user->name}}</div>
+                           <div class="small text-gray-500">{{$user->gender}}</div>
                         </div>
                      </div>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
-                     <a class="dropdown-item" href="{{url('/users/edit-profile')}}"><i class="feather-user mr-1"></i> Edit Profile</a>
+                     <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
                   </div>
