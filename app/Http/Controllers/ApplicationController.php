@@ -12,7 +12,7 @@ class ApplicationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'jobs_id' => ['required','exists:jobs,id'],
+            'job_id' => ['exists:jobs,id'],
             // 'user_id' => ['required','exists:users,id'],
             'name' => ['required','string','max:255'],
             'email' => ['required','email','max:255'],
@@ -20,7 +20,7 @@ class ApplicationController extends Controller
         ]);
 
         $data =[
-            'jobs_id' => $request->jobs_id,
+            'job_id' => $request->job_id,
             'user_id' => Auth::id(),
             'name' => $request->name,
             'email' => $request->email,

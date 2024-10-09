@@ -13,7 +13,7 @@ class Application extends Model
     protected $table = 'application';
 
     protected $fillable = [
-        'jobs_id',
+        'job_id',
         'user_id',
         'name',
         'email',
@@ -22,7 +22,7 @@ class Application extends Model
 
     public function job()
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(Job::class, 'job_id');
     }
 
     public function user()
