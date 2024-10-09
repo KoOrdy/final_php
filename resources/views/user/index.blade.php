@@ -153,7 +153,7 @@
                   <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
                      <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                         <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="{{ $user->profile_picture ? asset('storage/' . $post->user->profile_picture) : asset('default-profile.png') }}" alt="">
+                           <img class="rounded-circle" src="{{auth()->user()->profile_picture ? asset('storage/' . $post->user->profile_picture) : asset('default-profile.png') }}" alt="">
                            <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
