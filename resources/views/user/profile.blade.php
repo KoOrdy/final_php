@@ -99,7 +99,7 @@
                <aside class="col col-xl-3 order-xl-1 col-lg-12 order-lg-1 col-12">
                   <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
                      <div class="py-4 px-3 border-bottom">
-                        <img src="assets/img/66.png" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+                        <img src="{{asset('/storage/' . $user->profile_picture)}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
                         <h5 class="font-weight-bold text-dark mb-1 mt-4">{{$user->name}}</h5>
                         <p class="mb-0 text-muted">{{$user->gender}}</p>
                      </div>
