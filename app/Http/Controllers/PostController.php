@@ -9,25 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-<<<<<<< HEAD
-    // عرض جميع المنشورات
-
-    // عرض صفحة إنشاء منشور جديد
-    public function create()
-    {
-       return view('user.create');
-    }
-
-//    public
-
-=======
     
     public function create()
     {
        return view('user.create'); 
     }
 
->>>>>>> 15f7d0d3cffe307962dcc1a4071edacec76c6fed
     public function store(Request $request)
     {
         $request->validate([
@@ -48,12 +35,7 @@ class PostController extends Controller
         }
 
         Post::create($data);
-//        Post::create([
-//            //'content' => $request->input('content'),
-//            'content' => $request['content'],
-//            //'image'   => $imagePath,
-//            'user_id' => Auth::user()->id,
-//        ]);
+
 
         return redirect()->back()->with('success', 'Post created successfully!');
     }
