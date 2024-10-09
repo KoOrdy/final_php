@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class PostController extends Controller
@@ -40,11 +41,12 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post created successfully!');
     }
 
-    public function index()
+    public function index($id)
     {
         //$posts = Post::with('user')->latest()->get();
         $posts = Post::all();
-        $user = Auth::user();
+        $user = User::with('posts')->findOrFail($id);
+
         return view('user.index', compact('user' , 'posts')); 
     }
 
