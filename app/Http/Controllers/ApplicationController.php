@@ -31,4 +31,13 @@ class ApplicationController extends Controller
 
         return redirect()->back()->with('success', 'Your application has been submitted!');    }
 
+    public function index()
+    {
+        $user = Auth::user();
+        $applications = Application::whereHas('job', function ($query) use ($user) {
+            $query->where('user_id', $user->id);  
+        })->with(['job', 'user'])->get();
+        
+        return view('user.myjobs', compact('user', 'applications'));
+    }
 }

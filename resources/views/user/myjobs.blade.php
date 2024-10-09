@@ -79,16 +79,16 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div> 
+                  <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
-                        @csrf
+                     @csrf
 
-                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
-                                               onclick="event.preventDefault();
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1"
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
+                        {{ __('Log Out') }}
+                     </a>
+                  </form>
                </div>
             </li>
          </ul>
@@ -113,66 +113,32 @@
    <div class="py-4">
       <div class="container">
          <div class="row">
-            <!-- Left Column -->
-            <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-               <div class="box shadow-sm border rounded bg-white mb-3">
-                  <div class="box-title border-bottom p-3">
-                     <h6 class="m-0">Job 1 - Application</h6>
-                  </div>
-                  <div class="box-body p-3">
-                     <p>
-                        <strong>Job Title:</strong> Software Developer<br>
-                        <strong>Company:</strong> Tech Innovators Inc.<br>
-                        <strong>Location:</strong> Remote<br>
-                        <strong>Job Description:</strong> You will be responsible for designing, coding, and modifying websites, from layout to function according to a client's specifications. You’ll work closely with other developers to ensure high-quality and performance of the web application.<br>
-                     </p>
-                     <!-- Buttons -->
-                     <div class="d-flex justify-content-end mt-3">
-                        <button class="btn btn-success mr-2">Approve</button>
-                        <button class="btn btn-danger">Decline</button>
+            @foreach ($applications as $application)
+               <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+                  <div class="box shadow-sm border rounded bg-white mb-3 p-4" style="border-radius: 15px;">
+                     <div class="box-title border-bottom pb-3">
+                        <h5 class="font-weight-bold text-primary tex">Job Details</h5>
+                        <ul class="list-unstyled ml-4 mt-3">
+                           <li><strong>Job Title:</strong> <span class="text-muted">{{ $application->job->job_title }}</span></li>
+                           <li><strong>Company:</strong> <span class="text-muted">{{ $application->job->company }}</span></li>
+                           <li><strong>Location:</strong> <span class="text-muted">{{ $application->job->location }}</span></li>
+                        </ul>
+                     </div>
+                     <div class="box-body mt-3">
+                        <h4 class="text-center text-dark">Applicant Details</h4>
+                        <p class="mt-4 text-center">
+                           <strong>Name:</strong> <span class="text-muted">{{ $application->name }}</span><br>
+                           <strong>Phone Number:</strong> <span class="text-muted">{{ $application->phone_number }}</span><br>
+                           <strong>Email:</strong> <span class="text-muted">{{ $application->email }}</span>
+                        </p>
+                        <div class="d-flex justify-content-center mt-4">
+                           <button class="btn btn-success mr-3 px-4 py-2">Approve</button>
+                           <button class="btn btn-danger px-4 py-2">Decline</button>
+                        </div>
                      </div>
                   </div>
-            </main>
-
-            <!-- Right Column -->
-            <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-               <div class="box shadow-sm border rounded bg-white mb-3">
-                  <div class="box-title border-bottom p-3">
-                     <h6 class="m-0">Job 1 - Application</h6>
-                  </div>
-                  <div class="box-body p-3">
-                     <p>
-                        <strong>Job Title:</strong> Software Developer<br>
-                        <strong>Company:</strong> Tech Innovators Inc.<br>
-                        <strong>Location:</strong> Remote<br>
-                        <strong>Job Description:</strong> You will be responsible for designing, coding, and modifying websites, from layout to function according to a client's specifications. You’ll work closely with other developers to ensure high-quality and performance of the web application.<br>
-                     </p>
-                     <!-- Buttons -->
-                     <div class="d-flex justify-content-end mt-3">
-                        <button class="btn btn-success mr-2">Approve</button>
-                        <button class="btn btn-danger">Decline</button>
-                     </div>
-                  </div>
-            </main>
-            <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-               <div class="box shadow-sm border rounded bg-white mb-3">
-                  <div class="box-title border-bottom p-3">
-                     <h6 class="m-0">Job 1 - Application</h6>
-                  </div>
-                  <div class="box-body p-3">
-                     <p>
-                        <strong>Job Title:</strong> Software Developer<br>
-                        <strong>Company:</strong> Tech Innovators Inc.<br>
-                        <strong>Location:</strong> Remote<br>
-                        <strong>Job Description:</strong> You will be responsible for designing, coding, and modifying websites, from layout to function according to a client's specifications. You’ll work closely with other developers to ensure high-quality and performance of the web application.<br>
-                     </p>
-                     <!-- Buttons -->
-                     <div class="d-flex justify-content-end mt-3">
-                        <button class="btn btn-success mr-2">Approve</button>
-                        <button class="btn btn-danger">Decline</button>
-                     </div>
-                  </div>
-            </main>
+               </main>
+            @endforeach
          </div>
 
 
@@ -202,23 +168,23 @@
                         <h5 class="m-0">Post a new job</h5>
                      </div>
                      <div class="card-body p-4">
-                        
+
                         <form action="{{ url('users/myjobs/store') }}" method="post">
 
                            @csrf
                            @if(session('success'))
-                                 <p class="alert alert-success">
-                                     {{session('success')}}
-                                 </p>
+                           <p class="alert alert-success">
+                              {{session('success')}}
+                           </p>
                            @endif
                            @if ($errors->any())
-                             <div class="alert alert-danger">
-                                 <ul>
-                                     @foreach ($errors->all() as $error)
-                                         <li>{{ $error }}</li>
-                                     @endforeach
-                                 </ul>
-                             </div>
+                           <div class="alert alert-danger">
+                              <ul>
+                                 @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                                 @endforeach
+                              </ul>
+                           </div>
                            @endif
 
                            <div class="form-group">

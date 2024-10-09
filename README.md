@@ -1,4 +1,3 @@
-Sure! Here’s a revised version of your README file without the Laravel section, formatted similarly to the original document:
 
 ---
 
