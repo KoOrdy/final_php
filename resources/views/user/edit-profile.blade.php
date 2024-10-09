@@ -153,7 +153,7 @@
                              @endif
 
                              @csrf
-                             @method('PUT')
+                             @method('put')
 
                              <div class="row">
                                  <div class="col-sm-6 mb-2">
@@ -246,7 +246,7 @@
                              </div>
                              <div class="row">
                                  <div class="overflow-hidden text-center p-3">
-                                 <button type="submit" name="action" value="update" class="font-weight-bold btn btn-light rounded p-3 d-block">
+                                 <button type="submit" value="update" class="font-weight-bold btn btn-light rounded p-3 d-block">
                                      Save
                                  </button>
                                 </div>

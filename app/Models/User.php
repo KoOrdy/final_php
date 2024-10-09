@@ -52,7 +52,12 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(related: Post::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(related: Job::class);
     }
 
 }

@@ -79,8 +79,16 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
+                  <div class="dropdown-divider"></div> 
+                  <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                        @csrf
+
+                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
+                                               onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
                </div>
             </li>
          </ul>
@@ -194,27 +202,42 @@
                         <h5 class="m-0">Post a new job</h5>
                      </div>
                      <div class="card-body p-4">
-                        <form action="" method="POST">
+                        
+                        <form action="{{ url('users/myjobs/store') }}" method="post">
 
                            @csrf
+                           @if(session('success'))
+                                 <p class="alert alert-success">
+                                     {{session('success')}}
+                                 </p>
+                           @endif
+                           @if ($errors->any())
+                             <div class="alert alert-danger">
+                                 <ul>
+                                     @foreach ($errors->all() as $error)
+                                         <li>{{ $error }}</li>
+                                     @endforeach
+                                 </ul>
+                             </div>
+                           @endif
 
                            <div class="form-group">
                               <label for="job_title" class="font-weight-bold">Job Title</label>
-                              <input type="text" class="form-control rounded-pill" id="job_title" placeholder="Enter job title" class="form-control" required>
+                              <input name="job_title" type="text" class="form-control rounded-pill" id="job_title" placeholder="Enter job title" class="form-control" required>
                            </div>
                            <div class="form-group">
                               <label for="company" class="font-weight-bold">Company</label>
-                              <input type="text" class="form-control rounded-pill" id="company" placeholder="Enter company name" class="form-control" required>
+                              <input name='company' type="text" class="form-control rounded-pill" id="company" placeholder="Enter company name" class="form-control" required>
                            </div>
                            <div class="form-group">
                               <label for="location" class="font-weight-bold">Location</label>
-                              <input type="text" class="form-control rounded-pill" id="location" placeholder="Enter location" class="form-control" required>
+                              <input name="location" type="text" class="form-control rounded-pill" id="location" placeholder="Enter location" class="form-control" required>
                            </div>
                            <div class="form-group">
                               <label for="description" class="font-weight-bold">Description</label>
-                              <textarea class="form-control rounded" id="description" rows="4" placeholder="Enter job description" class="form-control" required></textarea>
+                              <textarea name="description" class="form-control rounded" id="description" rows="4" placeholder="Enter job description" class="form-control" required></textarea>
                            </div>
-                           <button type="submit" class="btn btn-primary btn-block rounded-pill">Post Job</button>
+                           <button type="submit" class="btn btn-primary btn-block rounded-pill" name="action">Post Job</button>
                         </form>
                      </div>
                   </div>
