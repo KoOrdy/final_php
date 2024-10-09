@@ -47,7 +47,7 @@ class PostController extends Controller
 
     }
 
-    public function index()
+    public function index($id)
     {
         //$posts = Post::with('user')->latest()->get();
         $posts = Post::all();
