@@ -105,6 +105,9 @@
                         </li>
 
                      </ul>
+
+                     <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
+                     @csrf
                      <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                            <div class="p-3 d-flex align-items-center w-100" href="#">
@@ -113,7 +116,7 @@
                                  <div class="status-indicator bg-success"></div>
                               </div>
                               <div class="w-100">
-                                 <textarea placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="1"></textarea>
+                                 <textarea name="content" placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="1"></textarea>
                               </div>
                            </div>
                         </div>
@@ -131,10 +134,15 @@
                      <div class="border-top p-3 d-flex align-items-center">
                         <div class="mr-auto"></div>
                         <div class="flex-shrink-1">
-                           <button type="button" class="btn btn-primary btn-sm">Post Status</button>
+                           <button type="submit" class="btn btn-primary btn-sm">Post Status</button>
                         </div>
                      </div>
                   </div>
+               </form>
+
+                  @foreach ($posts as $post)
+                  
+                  
                   <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
                      <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                         <div class="dropdown-list-image mr-3">
@@ -142,13 +150,13 @@
                            <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
-                           <div class="text-truncate">Tobia Crivellari</div>
-                           <div class="small text-gray-500">Product Designer at askbootstrap</div>
+                           <div class="text-truncate">{{$user->name}}</div>
+                           <div class="small text-gray-500">{{$user->email}}</div>
                         </div>
-                        <span class="ml-auto small">3 hours</span>
+                        <span class="ml-auto small">{{ $user->created_at->diffForHumans() }}</span>
                      </div>
                      <div class="p-3 border-bottom osahan-post-body">
-                        <p class="mb-0">Tmpo incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <a href="#">laboris consequat.</a></p>
+                        <p class="mb-0">{{$post->content}}</p>
                      </div>
                      <div class="p-3 border-bottom osahan-post-footer">
                         <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i> </a>
@@ -158,14 +166,16 @@
 
                   </div>
 
+                  @endforeach
 
                </main>
+
                <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
                   <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
                      <div class="py-4 px-3 border-bottom">
                         <img src="{{asset('img/66.png')}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
-                        <h5 class="font-weight-bold text-dark mb-1 mt-4">Gurdeep Osahan</h5>
-                        <p class="mb-0 text-muted">UI / UX Designer</p>
+                        <h5 class="font-weight-bold text-dark mb-1 mt-4">{{$user->name}}</h5>
+                        <p class="mb-0 text-muted">{{$user->bio}}</p>
                      </div>
 
                      <div class="overflow-hidden border-top">

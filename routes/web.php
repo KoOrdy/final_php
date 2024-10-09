@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
 
     Route::get('users/add', [UserController::class, 'add'])->name('users.add');
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    //Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/edit-profile/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/update-profile/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('users/delete-image/{id}', [UserController::class, 'deleteImage'])->name('users.deleteImage');
@@ -48,6 +49,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('users/jobs', [JobController::class, 'jobsIndex'])->name('jobs');
+
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        //Route::resource('posts', PostController::class);
 });
 
 require __DIR__.'/auth.php';

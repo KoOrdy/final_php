@@ -19,4 +19,13 @@ class Post extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function getContent()
+    {
+        return  $this->content;
+    }
+    public function getUserId()
+    {
+        return  $this->user_id;
+    }
 }
