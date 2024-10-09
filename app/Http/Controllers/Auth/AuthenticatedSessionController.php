@@ -30,12 +30,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // return redirect()->intended(route('dashboard', absolute: false));
         $user = Auth::user();
         $posts = Post::all();
 
-
-        return view('user.index', compact('user', 'posts')); 
+        return redirect('/users')->with(compact('user', 'posts'));
 
     }
 
