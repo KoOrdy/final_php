@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    
+
     public function create()
     {
        return view('user.create'); 
