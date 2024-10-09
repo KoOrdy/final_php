@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    
+
     public function create()
     {
        return view('user.create'); 
@@ -19,22 +19,28 @@ class PostController extends Controller
     {
         $request->validate([
             'content' => 'required|string',
-           'profile_picture'   => 'image'|'mimes:jpeg,png,jpg,gif'|'max:2048', 
+            'image'   => ['image','mimes:jpeg,png,jpg,gif','max:2048'],
         ]);
 
-        if($request->hasFile('profile_picture')){
-            $imagePath = $request->file('profile_picture')->store('profile_picture', 'public');
+        $data = [
+            'content'=> $request['content'],
+            'user_id' => Auth::user()->id,
+        ];
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $data['image'] = $image->storeAs('/img', time() . '.' . $image->extension(), 'public');
+
+
         }
 
-        Post::create([
-            'content' => $request['content'],
-            'profile_picture'   => $imagePath,
-            'user_id' => Auth::user()->id,
-            
-        ]);
-
-        
-
+        Post::create($data);
+//        Post::create([
+//            //'content' => $request->input('content'),
+//            'content' => $request['content'],
+//            //'image'   => $imagePath,
+//            'user_id' => Auth::user()->id,
+//        ]);
 
         return redirect()->back()->with('success', 'Post created successfully!');
     }

@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function add()
-    {
-        User::factory(10)->create();
-    }
+    // public function add()
+    // {
+    //     User::factory(10)->create();
+    // }
 
     public function index()
     {

@@ -77,11 +77,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div> 
+                  <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                         @csrf
 
-                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
+                        <a href="{{route('logout')}}" class="feather-log-out mr-1"
                                                onclick="event.preventDefault();
                                         this.closest('form').submit();">
                             {{ __('Log Out') }}
@@ -106,43 +106,50 @@
 
                      </ul>
 
-                     <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
-                     @csrf
-                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                           <div class="p-3 d-flex align-items-center w-100" href="#">
-                              <div class="dropdown-list-image mr-3">
-                                 <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
-                                 <div class="status-indicator bg-success"></div>
+                      <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <div class="tab-content" id="myTabContent">
+                              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                  <div class="p-3 d-flex align-items-center w-100" href="#">
+                                      <div class="dropdown-list-image mr-3">
+                                          <img class="rounded-circle" src="{{ asset('img/66.png') }}" alt="">
+                                          <div class="status-indicator bg-success"></div>
+                                      </div>
+                                      <div class="w-100">
+                                          <textarea name="content" placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="1"></textarea>
+                                      </div>
+                                  </div>
                               </div>
-                              <div class="w-100">
-                                 <textarea name="content" placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="1"></textarea>
+
+                              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                  <div class="p-3 w-100">
+                                      <textarea placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
+                                  </div>
                               </div>
-                           </div>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                           <div class="p-3 w-100">
-                              <textarea placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
-                           </div>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                           <div class="p-3 w-100">
-                              <textarea placeholder="Write an article..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="border-top p-3 d-flex align-items-center">
-                        <div class="mr-auto"></div>
-                        <div class="flex-shrink-1">
-                           <button type="submit" class="btn btn-primary btn-sm">Post Status</button>
-                        </div>
-                     </div>
-                  </div>
-               </form>
+
+                              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                  <div class="p-3 w-100">
+                                      <textarea placeholder="Write an article..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="p-3 w-100">
+                              <label for="photo">Upload Photo:</label>
+                              <input type="file" name="image" id="photo" class="form-control">
+                          </div>
+
+                          <div class="border-top p-3 d-flex align-items-center">
+                              <div class="mr-auto"></div>
+                              <div class="flex-shrink-1">
+                                  <button type="submit" class="btn btn-primary btn-sm">Post Status</button>
+                              </div>
+                          </div>
+                      </form>
 
                   @foreach ($posts as $post)
-                  
-                  
+
+
                   <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
                      <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
                         <div class="dropdown-list-image mr-3">

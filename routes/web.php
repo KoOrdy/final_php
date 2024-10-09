@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('users/jobs', [JobController::class, 'jobsIndex'])->name('jobs');
 
-    Route::post('/users', [PostController::class, 'store'])->name('posts.store');
+    Route::post('/users/store', [PostController::class, 'store'])->name('posts.store');
     Route::get('/users', [PostController::class, 'index'])->name('posts.index');
 });
 
