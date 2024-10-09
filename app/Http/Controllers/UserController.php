@@ -110,31 +110,6 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return view('user.job-profile', compact('user'));
-
-        //         // $user = Auth::user(); // Get the authenticated user
-
-        // // Check if the user exists and compare the job ID
-// $job = Jobs::where('id', $user->id)->all();
-
-        // if ($job) {
-//     // The user's ID matches the job ID
-//     // Do something here, for example:
-//     return 'Job found for user';
-// } else {
-//     // No matching job found
-//     return 'No job found for this user';
-// }
-
-
-// $usersWithJobs = DB::table('users')
-// ->join('jobs', 'users.id', '=', 'jobs.user_id')
-// ->select('users.name', 'jobs.title')
-// ->get();
-
-// // You can return the data to a view or JSON response
-// return view('users.index', ['usersWithJobs' => $usersWithJobs]);
-
-
     }
 
     public function myjobs()

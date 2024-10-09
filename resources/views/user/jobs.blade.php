@@ -49,7 +49,7 @@
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
+               <a class="nav-link" href="{{url('/posts')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>

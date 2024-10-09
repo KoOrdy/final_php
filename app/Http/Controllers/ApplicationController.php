@@ -50,6 +50,6 @@ class ApplicationController extends Controller
 
         Mail::to('eslam.mohamed200213@gmail.com')->send(new ApplicationMail());
     
-        return redirect()->back()->with('success', 'Application approved and email sent.');
+        return view('user.myjobs', compact('user'));
     }
 }
