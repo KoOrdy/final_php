@@ -81,11 +81,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div> 
+                  <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                         @csrf
 
-                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
+                        <a href="{{route('logout')}}" class="feather-log-out mr-1"
                                                onclick="event.preventDefault();
                                         this.closest('form').submit();">
                             {{ __('Log Out') }}
@@ -271,12 +271,64 @@
                         <p class="mb-0 mt-0 small">Here you can edit your posts.
                         </p>
                      </div>
-                     <div class="box-body px-3 pt-3 pb-0">
 
-                        /////////////////////////////
+                     <div>
+                         <table class="table text-nowrap mb-0 align-middle" >
+                             <thead class="text-dark fs-4">
+                             <tr>
+                                 <th class="border-bottom-0">
+                                     <h6 class="fw-semibold mb-0">Title</h6>
+                                 </th>
+                                 <th class="border-bottom-0" style="width:200px">
+                                     <h6 class="fw-semibold mb-0">Body</h6>
+                                 </th>
+                                 <th class="border-bottom-0">
+                                     <h6 class="fw-semibold mb-0">Image</h6>
+                                 </th>
+                                 <th class="border-bottom-0">
+                                     <h6 class="fw-semibold mb-0">User</h6>
+                                 </th>
+                             </tr>
+                             </thead>
+                             <tbody>
 
+{{--                             @foreach(auth()->user()->articles as $article)--}}
+
+
+                                 <tr>
+                                     <td class="border-bottom-0"><h6 class="fw-semibold mb-0">
+{{--                                             {{$article->title}}--}}
+                                         </h6></td>
+                                     <td class="border-bottom-0" >
+{{--                                         {{$article->body}}--}}
+                                     </td>
+                                     <td class="border-bottom-0">
+{{--                                         <img src="{{asset('/storage/' . $article->image)}}" width="200" />--}}
+                                     </td>
+                                     <td class="border-bottom-0">
+                                         <h6 class="fw-semibold mb-0 fs-4">
+{{--                                             {{ $article->user->name  }}--}}
+                                         </h6>
+                                     </td>
+                                     <td>
+{{--                                         <a href="{{url('articles/delete/'. $article->id )}}" class="btn btn-dark">--}}
+                                             Delete
+                                         </a>
+{{--                                         <a href="{{url('articles/edit/'. $article->id)}}" class="btn btn-warning">--}}
+                                             Update
+                                         </a>
+                                     </td>
+                                 </tr>
+
+
+{{--                             @endforeach--}}
+
+
+                             </tbody>
+                         </table>
                      </div>
-                  </div>
+
+                 </div>
              </main>
 
 
