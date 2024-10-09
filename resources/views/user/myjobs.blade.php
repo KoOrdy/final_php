@@ -132,7 +132,10 @@
                            <strong>Email:</strong> <span class="text-muted">{{ $application->email }}</span>
                         </p>
                         <div class="d-flex justify-content-center mt-4">
-                           <button class="btn btn-success mr-3 px-4 py-2">Approve</button>
+                           <form action="{{route('approve.application', '$application->id')}}" method="POST">
+                              @csrf
+                              <button type="submit" class="btn btn-success mr-3 px-4 py-2">Approve</button>
+                           </form>
                            <button class="btn btn-danger px-4 py-2">Decline</button>
                         </div>
                      </div>

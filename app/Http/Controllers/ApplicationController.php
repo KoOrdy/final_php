@@ -6,6 +6,9 @@ use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApplicationMail;
+
 
 class ApplicationController extends Controller
 {
@@ -39,5 +42,14 @@ class ApplicationController extends Controller
         })->with(['job', 'user'])->get();
         
         return view('user.myjobs', compact('user', 'applications'));
+    }
+
+    public function approveApplication()
+    {
+        $user = Auth::user();
+
+        Mail::to('eslam.mohamed200213@gmail.com')->send(new ApplicationMail());
+    
+        return redirect()->back()->with('success', 'Application approved and email sent.');
     }
 }
