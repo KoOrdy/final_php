@@ -163,40 +163,42 @@
                           </div>
                       </form>
 
-                      @foreach ($users as $user)
-    <div class="user-info">
-        <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
-            <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
-                <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" 
-                         src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('default-profile.png') }}" 
-                         alt="{{ $user->name }}" 
-                         width="50" height="50">
-                    <div class="status-indicator bg-success"></div>
-                </div>
-                <div class="font-weight-bold">
-                    <div class="text-truncate">{{ $user->name }}</div>
-                </div>
-            </div>
-
+            @foreach ($users as $user)
             @foreach ($user->posts as $post)
-                <div class="p-3 border-bottom osahan-post-body">
-                    <p class="mb-0">{{ $post->content }}</p>
+                           <div class="user-info">
+                              <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
+                                    <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
+                                       <div class="dropdown-list-image mr-3">
+                                          <img class="rounded-circle" 
+                                                src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('default-profile.png') }}" 
+                                                alt="{{ $user->name }}" 
+                                                width="50" height="50">
+                                          <div class="status-indicator bg-success"></div>
+                                       </div>
+                                       <div class="font-weight-bold">
+                                          <div class="text-truncate">{{ $user->name }}</div>
+                                       </div>
+                                    </div>
 
-                    @if($post->image)
-                        <img class="img-fluid mt-3" src="{{ asset('storage/' . $post->image) }}" alt="Post Image" />
-                    @endif
-                </div>
+                    
+                        <div class="p-3 border-bottom osahan-post-body">
+                           <p class="mb-0">{{ $post->content }}</p>
+
+                           @if($post->image)
+                                 <img class="img-fluid mt-3" src="{{ asset('storage/' . $post->image) }}" alt="Post Image" />
+                           @endif
+                        </div>
+
+                           <div class="p-3 border-bottom osahan-post-footer">
+                              <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
+                              <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i></a>
+                              <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i></a>
+                           </div>
+                     </div>
+                  </div>
+            @endforeach
             @endforeach
 
-            <div class="p-3 border-bottom osahan-post-footer">
-                <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
-                <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i></a>
-                <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i></a>
-            </div>
-        </div>
-    </div>
-@endforeach
 
 
 
