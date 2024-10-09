@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::put('users/update-profile/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('users/delete-image/{id}', [UserController::class, 'deleteImage'])->name('users.deleteImage');
     Route::put('users/update-image/{id}', [UserController::class, 'updateImage'])->name('users.updateImage');
+    Route::put('users/update-image/{id}', [UserController::class, 'updateImage'])->name('users.updateImage');
 
 
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
