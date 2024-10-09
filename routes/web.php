@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
@@ -37,7 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::get('users/edit-profile', [UserController::class, 'edit'])->name('users.edit');
     Route::get('users/profile', [UserController::class, 'profile'])->name('users.profile');
     
-    Route::get('users/application', [UserController::class, 'application'])->name('users.application');
+
+    Route::post('users/application', [ApplicationController::class, 'store'])->name('application.store');
+    Route::get('users/application/{job_id}', [JobController::class, 'apply'])->name('application');
 
 
     Route::post('/users/myjobs/store', [JobController::class, 'store'])->name('myjobs.store');

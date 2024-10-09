@@ -47,4 +47,11 @@ class JobController extends Controller
         $user = Auth::user();
         return view('user.jobs', compact('jobs' ,'user'));
     }
+
+    public function apply($job_id)
+    {
+        $job = Job::findOrFail($job_id);
+        $user = Auth::user();
+        return view('user.job-profile', compact('job', 'user'));
+    }
 }

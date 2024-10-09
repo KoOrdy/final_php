@@ -79,16 +79,16 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div> 
+                  <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
-                        @csrf
+                     @csrf
 
-                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
-                                               onclick="event.preventDefault();
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1"
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
+                        {{ __('Log Out') }}
+                     </a>
+                  </form>
                </div>
             </li>
          </ul>
@@ -110,81 +110,107 @@
          </div>
       </div>
    </div>
-   <div class="py-4">
+   <div class="py-5">
       <div class="container">
-         <div class="row">
-            <!-- Main Content -->
+         <div class="row g-4">
+
             <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-               <div class="card shadow-sm border rounded bg-white mb-3">
-                  <div class=" card-header text-center bg-primary text-white">
-                     <h6 class="m-0">Apply</h6>
+               <div class="card shadow-lg border-0 rounded-4 bg-light mb-5">
+                  <div class="card-header text-center bg-primary text-white rounded-top-4 py-4">
+                     <h6 class="m-0 fw-bold display-6">Apply for the Job</h6>
                   </div>
-                  <div class="box-body p-3">
-                     <form action="" method="POST">
+                  <div class="card-body p-5">
+                     <form action="{{ route('application.store') }}" method="POST">
 
                         @csrf
 
-                        <div class="form-group">
-                           <label for="name" class="font-weight-bold">Name</label>
-                           <input type="text" class="form-control rounded-pill" id="name" placeholder="Enter your name" class="form-control" required>
+                        <input type="hidden" name="job_id" value="{{ $job->id }}">
+                        <input type="hidden" name="user_id" value="{{ Auth::id()}}">
+
+                        @if(session('success'))
+                        <p class="alert alert-success">
+                           {{session('success')}}
+                        </p>
+                        @endif
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                           <ul>
+                              @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                              @endforeach
+                           </ul>
                         </div>
-                        <div class="form-group">
-                           <label for="phone_number" class="font-weight-bold">Phone Number</label>
-                           <input type="text" class="form-control rounded-pill" id="phone_number" placeholder="Enter your phone number" class="form-control" required>
+                        @endif
+
+                        <div class="form-group mb-4">
+                           <label for="name" class="fw-bold h5">Full Name</label>
+                           <input name="name" type="text" class="form-control rounded-pill shadow-sm" id="name" placeholder="Enter your full name" required>
                         </div>
-                        <div class="form-group">
-                           <label for="email" class="font-weight-bold">Email</label>
-                           <input type="text" class="form-control rounded-pill" id="email" placeholder="Enter your email" class="form-control" required>
+                        <div class="form-group mb-4">
+                           <label for="phone_number" class="fw-bold h5">Phone Number</label>
+                           <input name="phone_number" type="text" class="form-control rounded-pill shadow-sm" id="phone_number" placeholder="Enter you phone number" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block rounded-pill">Apply</button>
+                        <div class="form-group mb-4">
+                           <label for="email" class="fw-bold h5">Email Address</label>
+                           <input name="email" type="email" class="form-control rounded-pill shadow-sm" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block rounded-pill shadow-lg py-2">Submit Application</button>
                      </form>
                   </div>
                </div>
             </main>
 
-
-            <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12"></main>
-            <div class="box shadow-sm border rounded bg-white mb-3">
-               <div class="box-title border-bottom p-3">
-                  <h6 class="m-0">Job Description</h6>
+            <!-- Job Description Section -->
+            <main class="col col-xl-6 order-xl-1 col-lg-12 order-lg-2 col-md-12 col-sm-12 col-12">
+               <div class="card shadow-lg border-0 rounded-4 bg-light mb-5">
+                  <div class="card-header bg-dark text-white rounded-top-4 py-4">
+                     <h6 class="m-0 fw-bold display-6">Job Description</h6>
+                  </div>
+                  <div class="card-body p-5">
+                     <p class="h5">{{$job->description}}</p>
+                  </div>
                </div>
-               <div class="box-body p-3">
-                  <p>Headquartered in Melbourne, Australia, Envato is a completely online company with an ecosystem of sites and services to help people get creative. We’ve consistently been named as one of the Best Places to Work in Australia, since 2015, in the BRW Awards , and we’ve also been awarded the title of Australia's Coolest Company for Women and Diversity by JobAdvisor.</p>
-                  <p class="mb-0">Envato was found in 2006 and, since then, we’ve helped a community of creative sellers earn more than $500 Million . Millions of people around the world choose our marketplace, studio and courses to buy files, hire freelancers, or learn the skills needed to build websites, videos, apps, graphics and more. Find out more at Envato Market , Envato Elements , Envato Sites , Envato Studio and Tuts+...
-                  </p>
+            </main>
+
+            <!-- Job Details Section -->
+            <aside class="col col-xl-12">
+               <div class="card shadow-lg border-0 rounded-4 bg-light">
+                  <div class="card-header bg-dark text-white rounded-top-4 py-4">
+                     <h6 class="m-0 fw-bold display-6">Job Details</h6>
+                  </div>
+                  <div class="card-body p-4">
+                     <table class="table table-borderless mb-0">
+                        <tbody>
+                           <tr class="border-bottom">
+                              <th class="p-3 text-muted h5">Job Title</th>
+                              <td class="p-3 h5">{{$job->job_title}}</td>
+                           </tr>
+                           <tr class="border-bottom">
+                              <th class="p-3 text-muted h5">Company</th>
+                              <td class="p-3 h5">{{$job->company}}</td>
+                           </tr>
+                           <tr class="border-bottom">
+                              <th class="p-3 text-muted h5">Location</th>
+                              <td class="p-3 h5"><i class="bi bi-geo-alt"></i> {{$job->location}}</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </aside>
+            <div class="container">
+               <div class="py-2">
+                  <div>
+                  </div>
                </div>
             </div>
-
-
-            </main>
-            <aside>
-               <div class="box-title border-bottom p-3">
-                  <h6 class="m-0">Job Details</h6>
-               </div>
-               <div class="box-body">
-                  <table class="table table-borderless mb-0">
-                     <tbody>
-                        <tr class="border-bottom">
-                           <th class="p-3">Job Title</th>
-                           <td class="p-3">////
-                           </td>
-                        </tr>
-                        <tr class="border-bottom">
-                           <th class="p-3">Company</th>
-                           <td class="p-3">////</td>
-                        </tr>
-                        <tr class="border-bottom">
-                           <th class="p-3">Location</th>
-                           <td class="p-3"><i class="feather-map-pin"></i> ////
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
          </div>
-         </aside>
       </div>
    </div>
+
+
+
+
    </div>
    <!-- Bootstrap core JavaScript -->
    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>

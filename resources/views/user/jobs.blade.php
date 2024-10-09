@@ -151,7 +151,7 @@
                                           <p class="text-muted"><i class="feather-edit"></i> {{ $job->description }}</p>
                                        </div>
                                        <div class="d-flex justify-content-end">
-                                          <a href="{{ url('/users/application') }}" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" style="transition: background-color 0.2s ease;">
+                                          <a href="{{ url('/users/application' , ['job_id' => $job->id]) }}" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" style="transition: background-color 0.2s ease;">
                                              Apply
                                           </a>
                                        </div>
