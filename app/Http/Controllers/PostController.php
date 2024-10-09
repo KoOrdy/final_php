@@ -47,6 +47,14 @@ class PostController extends Controller
 
     }
 
+    public function deletePost(Request $request, $id){
+        $post = Post::find($id);
+        if($post){
+            $post->delete();
+        }
+        return redirect()->back()->with('success', 'Post deleted successfully!');
+    }
+
     public function index($id)
     {
         //$posts = Post::with('user')->latest()->get();
