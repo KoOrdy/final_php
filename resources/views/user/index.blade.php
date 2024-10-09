@@ -60,23 +60,23 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="{{asset('img/66.png')}}">
+                  <img class="img-profile rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_picture)}}">
                </a>
                <!-- Dropdown - User Information -->
                <div class="dropdown-menu dropdown-menu-right shadow-sm">
                   <div class="p-3 d-flex align-items-center">
                      <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
+                        <img class="rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_picture)}}" width="35px" alt="">
                         <div class="status-indicator bg-success"></div>
                      </div>
                      <div class="font-weight-bold">
-                        <div class="text-truncate">{{$user->name}}</div>
-                        <div class="small text-gray-500">{{$user->gender}}</div>
+                        <div class="text-truncate">{{auth()->user()->name}}</div>
+                        <div class="small text-gray-500">{{auth()->user()->gender}}</div>
                      </div>
                   </div>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
-                  <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
+                  <a class="dropdown-item" href="{{url('/users/edit-profile/'.auth()->user()->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                   <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                         @csrf
@@ -107,12 +107,28 @@
                      </ul>
 
                       <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                        
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                        
+                        @if(session('success'))
+                        <p class="alert alert-success">
+                            {{session('success')}}
+                        </p>
+                    @endif
                           @csrf
                           <div class="tab-content" id="myTabContent">
                               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                   <div class="p-3 d-flex align-items-center w-100" href="#">
                                       <div class="dropdown-list-image mr-3">
-                                          <img class="rounded-circle" src="{{ asset('img/66.png') }}" alt="">
+                                          <img class="rounded-circle" src="{{  asset('storage/' . auth()->user()->profile_picture) }}" width="50px" alt="">
                                           <div class="status-indicator bg-success"></div>
                                       </div>
                                       <div class="w-100">
@@ -147,42 +163,52 @@
                           </div>
                       </form>
 
-                  @foreach ($posts as $post)
+                      @foreach ($users as $user)
+    <div class="user-info">
+        <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
+            <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" 
+                         src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('default-profile.png') }}" 
+                         alt="{{ $user->name }}" 
+                         width="50" height="50">
+                    <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                    <div class="text-truncate">{{ $user->name }}</div>
+                </div>
+            </div>
+
+            @foreach ($user->posts as $post)
+                <div class="p-3 border-bottom osahan-post-body">
+                    <p class="mb-0">{{ $post->content }}</p>
+
+                    @if($post->image)
+                        <img class="img-fluid mt-3" src="{{ asset('storage/' . $post->image) }}" alt="Post Image" />
+                    @endif
+                </div>
+            @endforeach
+
+            <div class="p-3 border-bottom osahan-post-footer">
+                <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
+                <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i></a>
+                <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i></a>
+            </div>
+        </div>
+    </div>
+@endforeach
 
 
-                  <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
-                     <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
-                        <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="{{auth()->user()->profile_picture ? asset('storage/' . $post->user->profile_picture) : asset('default-profile.png') }}" alt="">
-                           <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                           <div class="text-truncate">{{$user->name}}</div>
-                           <div class="small text-gray-500">{{$user->email}}</div>
-                        </div>
-                        <span class="ml-auto small">{{ $user->created_at->diffForHumans() }}</span>
-                     </div>
-                     <div class="p-3 border-bottom osahan-post-body">
-                        <p class="mb-0">{{$post->content}}</p>
-                     </div>
-                     <div class="p-3 border-bottom osahan-post-footer">
-                        <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i> </a>
-                        <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> </a>
-                        <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i> </a>
-                     </div>
 
-                  </div>
-
-                  @endforeach
 
                </main>
 
                <aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
                   <div class="box mb-3 shadow-sm border rounded bg-white profile-box text-center">
                      <div class="py-4 px-3 border-bottom">
-                        <img src="{{asset('img/66.png')}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
-                        <h5 class="font-weight-bold text-dark mb-1 mt-4">{{$user->name}}</h5>
-                        <p class="mb-0 text-muted">{{$user->bio}}</p>
+                        <img src="{{ asset('storage/' . auth()->user()->profile_picture)}}" class="img-fluid mt-2 rounded-circle" alt="Responsive image">
+                        <h5 class="font-weight-bold text-dark mb-1 mt-4">{{auth()->user()->name}}</h5>
+                        <p class="mb-0 text-muted">{{auth()->user()->bio}}</p>
                      </div>
 
                      <div class="overflow-hidden border-top">

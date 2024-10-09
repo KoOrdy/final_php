@@ -109,7 +109,6 @@
                                     @csrf
                                     @method('put')
                                     <div class="d-flex align-items-center">
-                                        <!-- Update Button with File Input -->
                                         <label data-toggle="tooltip" data-placement="top" data-original-title="Upload New Picture"
                                             class="btn btn-info m-0" for="fileAttachmentBtn">
                                             <i class="feather-image"></i> Update

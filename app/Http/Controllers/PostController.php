@@ -19,8 +19,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'content' => 'required|string',
-            'image'   => ['image','mimes:jpeg,png,jpg,gif','max:2048'],
+            'content' => ['required','string'],
+            'image'   => ['required','image','mimes:jpeg,png,jpg,gif,webp','max:2048'],
         ]);
 
         $data = [
@@ -34,6 +34,7 @@ class PostController extends Controller
 
 
         }
+
 
         Post::create($data);
 
@@ -56,14 +57,14 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 
-    public function index($user_id)
-    {
-        //$posts = Post::with('user')->latest()->get();
-        $posts = Post::all();
-        $user = User::with('posts')->findOrFail($user_id);
+    public function index()
+{
+    $currentuser=User::all();
+    $users = User::with('posts')->has('posts')->get();
 
-        return view('user.index', compact('user' , 'posts')); 
-    }
+    return view('user.index', compact('users','currentuser'));
+}
+
 
 
 }
