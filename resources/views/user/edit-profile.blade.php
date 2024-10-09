@@ -292,12 +292,12 @@
                              </thead>
                              <tbody>
 
-{{--                             @foreach(auth()->user()->articles as $article)--}}
+                            @foreach(auth()->user()->posts as $post)
 
 
                                  <tr>
                                      <td class="border-bottom-0"><h6 class="fw-semibold mb-0">
-{{--                                             {{$article->title}}--}}
+                                            {{$post->title}}
                                          </h6></td>
                                      <td class="border-bottom-0" >
 {{--                                         {{$article->body}}--}}

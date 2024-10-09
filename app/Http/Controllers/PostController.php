@@ -9,25 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-<<<<<<< HEAD
-    // عرض جميع المنشورات
-
-    // عرض صفحة إنشاء منشور جديد
-    public function create()
-    {
-       return view('user.create');
-    }
-
-//    public
-
-=======
-    
     public function create()
     {
        return view('user.create'); 
     }
 
->>>>>>> 15f7d0d3cffe307962dcc1a4071edacec76c6fed
     public function store(Request $request)
     {
         $request->validate([
@@ -56,6 +42,13 @@ class PostController extends Controller
 //        ]);
 
         return redirect()->back()->with('success', 'Post created successfully!');
+    }
+
+    public function showEdit(){
+
+        $posts=Post::all();
+        return view('user.edit-profile',compact('post'));
+
     }
 
     public function index()
