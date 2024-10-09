@@ -22,27 +22,30 @@ class PostController extends Controller
     {
         $request->validate([
             'content' => 'required|string',
-           // 'image'   => ['image','mimes:jpeg,png,jpg,gif','max:2048'], 
+           'profile_picture'   => 'image'|'mimes:jpeg,png,jpg,gif'|'max:2048', 
         ]);
 
-        //if($request->hasFile('image')){
-          //  $imagePath = $request->file('image')->store('images', 'public');
-        //}
+        if($request->hasFile('profile_picture')){
+            $imagePath = $request->file('profile_picture')->store('profile_picture', 'public');
+        }
 
         Post::create([
-            //'content' => $request->input('content'),
             'content' => $request['content'],
-            //'image'   => $imagePath,
+            'profile_picture'   => $imagePath,
             'user_id' => Auth::user()->id,
+            
         ]);
+
+        
+
 
         return redirect()->back()->with('success', 'Post created successfully!'); // إعادة التوجيه إلى قائمة المنشورات
     }
 
     public function index()
     {
-        //$posts = Post::with('user')->latest()->get();
-        $posts = Post::all(); // استرجاع جميع المنشورات
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::all();
         $user = Auth::user();
         return view('user.index', compact('user' , 'posts')); // عرض الصفحة
     }
