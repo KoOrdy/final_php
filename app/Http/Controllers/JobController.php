@@ -35,9 +35,16 @@ class JobController extends Controller
         return redirect()->back()->with('success','Job is created');
     }
 
-    public function index()
+    public function myJobsIndex()
     {
         $user = Auth::user();
         return view('user.myjobs', compact('user'));
+    }
+
+    public function jobsIndex()
+    {
+        $jobs = Job::all();
+        $user = Auth::user();
+        return view('user.jobs', compact('jobs' ,'user'));
     }
 }

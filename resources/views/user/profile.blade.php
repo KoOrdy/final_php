@@ -20,70 +20,78 @@
    <body>
       <!-- Navigation -->
       <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
-         <div class="container">
-            <a class="navbar-brand mr-2" href="{{url('/users')}}">
-               <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
-           </a>
-           
-            
-            <ul class="navbar-nav ml-auto d-flex align-items-center">
-               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-               <li class="nav-item dropdown no-arrow d-sm-none">
-                  <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <div class="container">
+         <a class="navbar-brand mr-2" href="{{url('/users')}}">
+            <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
+         </a>
+
+
+         <ul class="navbar-nav ml-auto d-flex align-items-center">
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+               <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="feather-search mr-2"></i>
-                  </a>
-                  <!-- Dropdown - Messages -->
-                  <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
-                     <form class="form-inline mr-auto w-100 navbar-search">
-                        <div class="input-group">
-                           <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
-                           <div class="input-group-append">
-                              <button class="btn" type="button">
+               </a>
+               <!-- Dropdown - Messages -->
+               <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                     <div class="input-group">
+                        <input type="text" class="form-control border-0 shadow-none" placeholder="Search people, jobs and more..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                           <button class="btn" type="button">
                               <i class="feather-search"></i>
-                              </button>
-                           </div>
-                        </div>
-                     </form>
-                  </div>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
-               </li>
-              
-               
-               <!-- Nav Item - User Information -->
-               <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-                  <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="{{asset('img/66.png')}}">
-                  </a>
-                  <!-- Dropdown - User Information -->
-                  <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                     <div class="p-3 d-flex align-items-center">
-                        <div class="dropdown-list-image mr-3">
-                           <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
-                           <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                           <div class="text-truncate">{{$user->name}}</div>
-                           <div class="small text-gray-500">{{$user->gender}}</div>
+                           </button>
                         </div>
                      </div>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
-                     <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
+                  </form>
+               </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{{url('/users/myjobs')}}"><i class="feather-users mr-2"></i><span class="d-none d-lg-inline">My Jobs</span></a>
+            </li>
+
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
+               <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="img-profile rounded-circle" src="{{asset('img/66.png')}}">
+               </a>
+               <!-- Dropdown - User Information -->
+               <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                  <div class="p-3 d-flex align-items-center">
+                     <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
+                        <div class="status-indicator bg-success"></div>
+                     </div>
+                     <div class="font-weight-bold">
+                        <div class="text-truncate">{{$user->name}}</div>
+                        <div class="small text-gray-500">{{$user->gender}}</div>
+                     </div>
                   </div>
-               </li>
-            </ul>
-         </div>
-      </nav>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
+                  <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
+                  <div class="dropdown-divider"></div> 
+                  <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                        @csrf
+
+                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
+                                               onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </nav>
       <div class="py-4">
          <div class="container">
             <div class="row">

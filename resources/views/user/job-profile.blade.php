@@ -79,8 +79,16 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="sign-in.html"><i class="feather-log-out mr-1"></i> Logout</a>
+                  <div class="dropdown-divider"></div> 
+                  <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
+                        @csrf
+
+                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
+                                               onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
                </div>
             </li>
          </ul>
