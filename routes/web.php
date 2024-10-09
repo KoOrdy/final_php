@@ -19,6 +19,7 @@ Route::get('/users', function () {
     return view('/users');
 })->middleware(['auth', 'verified'])->name('index');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -51,7 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::get('users/jobs', [JobController::class, 'jobsIndex'])->name('jobs');
 
     Route::post('/users/store', [PostController::class, 'store'])->name('posts.store');
-    Route::get('/users', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/users/{user_id}', [PostController::class, 'index'])->name('posts.index');
+
+    // Route::get('/users/{id}', [UserController::class, 'index'])->name('user.index');
+
 });
 
 require __DIR__.'/auth.php';

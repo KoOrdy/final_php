@@ -10,6 +10,7 @@ use App\Models\User;
 
 class PostController extends Controller
 {
+
     public function create()
     {
        return view('user.create'); 
@@ -40,18 +41,11 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post created successfully!');
     }
 
-    public function showEdit(){
-
-        $posts=Post::all();
-        return view('user.edit-profile',compact('post'));
-
-    }
-
-    public function index($id)
+    public function index($user_id)
     {
         //$posts = Post::with('user')->latest()->get();
         $posts = Post::all();
-        $user = User::with('posts')->findOrFail($id);
+        $user = User::with('posts')->findOrFail($user_id);
 
         return view('user.index', compact('user' , 'posts')); 
     }
