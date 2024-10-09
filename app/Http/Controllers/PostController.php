@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+<<<<<<< HEAD
     // عرض جميع المنشورات
 
     // عرض صفحة إنشاء منشور جديد
@@ -19,6 +20,14 @@ class PostController extends Controller
 
 //    public
 
+=======
+    
+    public function create()
+    {
+       return view('user.create'); 
+    }
+
+>>>>>>> 15f7d0d3cffe307962dcc1a4071edacec76c6fed
     public function store(Request $request)
     {
         $request->validate([
@@ -46,15 +55,15 @@ class PostController extends Controller
 //            'user_id' => Auth::user()->id,
 //        ]);
 
-        return redirect()->back()->with('success', 'Post created successfully!'); // إعادة التوجيه إلى قائمة المنشورات
+        return redirect()->back()->with('success', 'Post created successfully!');
     }
 
     public function index()
     {
         //$posts = Post::with('user')->latest()->get();
-        $posts = Post::all(); // استرجاع جميع المنشورات
+        $posts = Post::all();
         $user = Auth::user();
-        return view('user.index', compact('user' , 'posts')); // عرض الصفحة
+        return view('user.index', compact('user' , 'posts')); 
     }
 
 

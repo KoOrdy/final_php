@@ -49,7 +49,7 @@
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="{{url('/posts')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
+               <a class="nav-link" href="{{url('/users')}}"><i class="feather-home mr-2"></i><span class="d-none d-lg-inline">Posts</span></a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="{{url('/users/jobs')}}"><i class="feather-briefcase mr-2"></i><span class="d-none d-lg-inline">Jobs</span></a>
@@ -132,7 +132,7 @@
                            <strong>Email:</strong> <span class="text-muted">{{ $application->email }}</span>
                         </p>
                         <div class="d-flex justify-content-center mt-4">
-                           <form action="{{route('approve.application', '$application->id')}}" method="POST">
+                           <form action="{{route('approve.application', ['application_id' => $application->id])}}" method="POST">
                               @csrf
                               <button type="submit" class="btn btn-success mr-3 px-4 py-2">Approve</button>
                            </form>
