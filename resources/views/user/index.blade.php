@@ -166,6 +166,7 @@
                   </form>
 
                   @foreach ($users as $user)
+                  @foreach ($user->posts as $post)
                   <div class="user-info">
                      <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
                         <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
@@ -181,7 +182,7 @@
                            </div>
                         </div>
 
-                        @foreach ($user->posts as $post)
+                        
                         <div class="p-3 border-bottom osahan-post-body">
                            <p class="mb-0">{{ $post->content }}</p>
 
@@ -189,7 +190,6 @@
                            <img class="img-fluid mt-3" src="{{ asset('storage/' . $post->image) }}" alt="Post Image" />
                            @endif
                         </div>
-                        @endforeach
 
                         <div class="p-3 border-bottom osahan-post-footer">
                            <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
@@ -199,6 +199,8 @@
                      </div>
                   </div>
                   @endforeach
+                  @endforeach
+
 
 
 

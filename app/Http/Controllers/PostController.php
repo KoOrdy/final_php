@@ -59,10 +59,9 @@ class PostController extends Controller
 
     public function index()
 {
-    $currentuser=User::all();
     $users = User::with('posts')->has('posts')->get();
 
-    return view('user.index', compact('users','currentuser'));
+    return view('user.index', compact('users'));
 }
 
 
