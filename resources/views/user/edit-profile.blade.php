@@ -231,7 +231,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Bio Section -->
                                 <div class="form-group mb-4">
                                     <label class="mb-1">BIO<span class="text-danger">*</span></label>
                                     <div class="position-relative">
@@ -239,7 +238,6 @@
                                     placeholder="Enter Bio">{{old('bio',$user->bio)}}</textarea>
                                     </div>
                                 </div>
-                                <!-- End Bio Section -->
                                 <div class="row">
                                     <div class="col-sm-6 mb-2">
                                         <div class="js-form-message">
@@ -273,51 +271,40 @@
 
                         <div>
                             <table class="table text-nowrap mb-0 align-middle" >
-                                <thead class="text-dark fs-4">
-                                <tr>
-                                    <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Title</h6>
-                                    </th>
-                                    <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Image</h6>
-                                    </th>
-                                    <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">User</h6>
-                                    </th>
-                                </tr>
-                                </thead>
+                               
                                 <tbody>
 
-                                @foreach(auth()->user()->posts as $post)
-
-
-                                    <tr>
-                                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">
-                                                {{$post->content}}
-                                            </h6></td>
-                                        
-                                        <td class="border-bottom-0">
-                                            <img src="{{asset('/storage/' . $post->image)}}" width="200" />
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">
-                                                {{ $post->user->name  }}
-                                            </h6>
-                                        </td>
-                                        <td>
-                                            <a href="{{url('users/edit-profile/delete-post/'. $post->id )}}" class="btn btn-dark">
-                                                Delete
-                                            </a>
-                                                <a href="{{url('articles/edit/'. $post->id)}}" class="btn btn-warning">
-                                                Update
-                                            </a>
-                                        </td>
-                                    </tr>
-
-
+                                    @foreach (auth()->user()->posts as $post)
+                                    <div class="user-info">
+                                       <div class="box shadow-sm border rounded bg-white mb-3 osahan-post">
+                                          <div class="p-3 d-flex align-items-center border-bottom osahan-post-header">
+                                             <div class="dropdown-list-image mr-3">
+                                                <img class="rounded-circle" 
+                                                   src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('default-profile.png') }}" 
+                                                   alt="{{ auth()->user()->name }}" 
+                                                   width="50" height="50">
+                                                <div class="status-indicator bg-success"></div>
+                                             </div>
+                                             <div class="font-weight-bold">
+                                                <div class="text-truncate">{{ auth()->user()->name }}</div>
+                                             </div>
+                                          </div>
+                                 
+                                          <div class="p-3 border-bottom osahan-post-body">
+                                             <p class="mb-0">{{ $post->content }}</p>
+                                 
+                                             @if($post->image)
+                                                <img class="img-fluid mt-3" src="{{ asset('storage/' . $post->image) }}" alt="Post Image" width="800"/>
+                                             @endif
+                                          </div>
+                                 
+                                          <div class="p-3 border-bottom osahan-post-footer">
+                                             <a href="{{ url('users/edit-post/' . $post->id) }}" class="btn btn-warning">Update</a>
+                                             <a href="{{ url('users/edit-profile/delete-post/' . $post->id) }}" class="btn btn-dark">Delete</a>
+                                          </div>
+                                       </div>
+                                    </div>
                                     @endforeach
-
-
                                 </tbody>
                             </table>
                         </div>

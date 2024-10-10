@@ -6,6 +6,8 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class PostController extends Controller
@@ -55,6 +57,47 @@ class PostController extends Controller
             $post->delete();
         }
         return redirect()->back()->with('success', 'Post deleted successfully!');
+    }
+
+    public function editPost(Request $request, int $id){
+        $post=Post::find($id);
+        if($post){
+            return view('user.edit-post',compact('post'));
+        }
+        else{
+            echo 'hide';
+        }
+    }
+
+    public function updatePost(Request $request , $id){
+        $request->validate([
+            'content' => ['required','string'],
+            'image'   => ['nullable','image','mimes:jpeg,png,jpg,gif,webp','max:2048'],
+        ]);
+        
+        $data=[
+            'content' => $request['content'],
+            'user_id' => Auth::user()->id,
+        ];
+
+        $post=Post::find($id);
+        if($post){
+            if ($request->hasFile('image')) {
+
+                $image = $request->file('image');
+
+                Storage::disk('public')->delete($post->image);
+
+                $data['image'] = $image->storeAs('/img', time() . '.' . $image->extension(), 'public');
+            }
+
+            $post->update($data);
+            return redirect()->url('users')->with('success', 'Post updated successfully!');
+
+        }
+        
+
+
     }
 
     public function index()
