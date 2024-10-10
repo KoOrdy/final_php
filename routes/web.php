@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/users', [PostController::class, 'index'])->name('posts.index');
     Route::get('/users/edit-profile/delete-post/{id}', [PostController::class, 'deletePost']);
+    Route::get('users/edit-post/{id}', [PostController::class, 'editPost' ])->name('users.editPost');
+    Route::put('users/update-post/{id}', [PostController::class, 'updatePost' ])->name('users.updatePost');
 });
 
 require __DIR__.'/auth.php';
