@@ -111,6 +111,13 @@
 
 
    <div class="py-4">
+      
+
+      @if(session('success'))
+      <p class="alert alert-success">
+         {{session('success')}}
+      </p>
+      @endif
       <div class="container">
          <div class="row">
             @foreach ($applications as $application)
@@ -178,11 +185,6 @@
                         <form action="{{ url('users/myjobs/store') }}" method="post">
 
                            @csrf
-                           @if(session('success'))
-                           <p class="alert alert-success">
-                              {{session('success')}}
-                           </p>
-                           @endif
                            @if ($errors->any())
                            <div class="alert alert-danger">
                               <ul>

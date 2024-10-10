@@ -52,7 +52,7 @@ class ApplicationController extends Controller
 
         Mail::to($application->email)->send(new ApplicationApproveMail($application));
 
-        return response()->redirectTo('/users/myjobs');
+        return response()->redirectTo('/users/myjobs')->with('success', 'the application has been approved');
     }
 
     public function decline($application_id)
@@ -61,6 +61,6 @@ class ApplicationController extends Controller
 
         Mail::to($application->email)->send(new ApplicationDeclineMail($application));
         
-        return response()->redirectTo('/users/myjobs');
+        return response()->redirectTo('/users/myjobs')->with('success' ,'the application has been declined');
     }
 }
