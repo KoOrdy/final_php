@@ -81,6 +81,8 @@ class UserController extends Controller
     public function updateImage(Request $request, int $id)
     {
 
+        $user = User::find(id: $id);
+
 
         $request->validate([
             'profile_picture' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
@@ -90,10 +92,11 @@ class UserController extends Controller
 
             $image = $request->file('profile_picture');
 
+            Storage::disk('public')->delete($user->profile_picture);
+
             $data['profile_picture'] = $image->storeAs('/img', time() . '.' . $image->extension(), 'public');
         }
 
-        $user = User::find($id);
         $user->update($data);
         return redirect()->back()->with('success', 'Image Updated Successfully!');
 
