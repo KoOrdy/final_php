@@ -65,16 +65,22 @@ class UserController extends Controller
 
     public function deleteImage(int $id)
     {
-        $user = User::find($id);
-        if ($user) {
-            Storage::disk('public')->delete($user->profile_picture);
-            $user->update(['profile_picture' => null]);
+        if($id){
+            $user = User::find($id);
+            if ($user) {
+                Storage::disk('public')->delete($user->profile_picture);
+                $user->update(['profile_picture' => null]);
+                return redirect()->back()->with('success', 'image Deleted Successfully!');
+            }
         }
-        return redirect()->back()->with('success', 'image Deleted Successfully!');
+        else {
+            return redirect()->back()->with('error', 'cant delete image');
+        }
     }
 
     public function updateImage(Request $request, int $id)
     {
+
 
         $request->validate([
             'profile_picture' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],

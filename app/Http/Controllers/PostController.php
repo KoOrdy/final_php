@@ -62,6 +62,7 @@ class PostController extends Controller
     public function editPost(Request $request, int $id){
         $post=Post::find($id);
         if($post){
+
             return view('user.edit-post',compact('post'));
         }
         else{
