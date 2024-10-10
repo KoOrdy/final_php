@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="">
    <meta name="author" content="">
-   <title>Application</title>
+   <title>Job - Application</title>
    <!-- Slick Slider -->
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}" />
@@ -24,10 +24,8 @@
    <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
       <div class="container">
          <a class="navbar-brand mr-2" href="{{url('/users')}}">
-            <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
+         <h1 class="title">LinkedOut</h1>
          </a>
-
-
          <ul class="navbar-nav ml-auto d-flex align-items-center">
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
@@ -77,13 +75,13 @@
                      </div>
                   </div>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
+                  <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Profile</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.auth()->user()->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                   <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                      @csrf
 
-                     <a href="{{route('logout')}}" class="feather-log-out mr-1"
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1 font-weight-bold d-block"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}

@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Register</title>
+    <title>LinkedOut</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
         .nav-link {
             padding: 0.75rem 1.25rem;
             color: #000;
@@ -40,11 +43,43 @@
         .dark-mode .nav-link:hover {
             color: rgba(255, 255, 255, 0.7);
         }
+        .title {
+            font-size: 3rem; /* Large font size */
+            font-weight: bold; /* Bold font */
+            color: #343a40; /* Dark text color */
+            text-align: center; /* Center alignment */
+            margin-bottom: 2rem; /* Spacing below the title */
+            animation: fadeIn 1s ease-in-out, bounce 2s infinite; /* Animation effects */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px); /* Move title up */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0); /* Reset position */
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0); /* Normal position */
+            }
+            40% {
+                transform: translateY(-10px); /* Move up */
+            }
+            60% {
+                transform: translateY(-5px); /* Move slightly up */
+            }
+        }
     </style>
 </head>
 <body class="bg-light">
 
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <h1 class="title">LinkedOut</h1> <!-- Big title with animation -->
         <nav class="navbar navbar-light bg-light p-4 shadow-sm rounded">
             <div class="container-fluid justify-content-center">
                 <!-- Exact Blade code for login, register, and dashboard -->

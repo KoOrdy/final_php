@@ -26,10 +26,8 @@
     <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
       <div class="container">
          <a class="navbar-brand mr-2" href="{{url('/users')}}">
-            <img src="{{asset('img/logo.gif')}}" alt="" style="width: 50px; height: auto;">
+         <h1 class="title">LinkedOut</h1>
          </a>
-
-
          <ul class="navbar-nav ml-auto d-flex align-items-center">
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
             <li class="nav-item dropdown no-arrow d-sm-none">
@@ -79,13 +77,13 @@
                      </div>
                   </div>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
+                  <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Profile</a>
                   <a class="dropdown-item" href="{{url('/users/edit-profile/'.auth()->user()->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
                   <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                      @csrf
 
-                     <a href="{{route('logout')}}" class="feather-log-out mr-1"
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1 font-weight-bold d-block"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
@@ -283,7 +281,6 @@
                                                    src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('default-profile.png') }}" 
                                                    alt="{{ auth()->user()->name }}" 
                                                    width="50" height="50">
-                                                <div class="status-indicator bg-success"></div>
                                              </div>
                                              <div class="font-weight-bold">
                                                 <div class="text-truncate">{{ auth()->user()->name }}</div>
