@@ -130,11 +130,14 @@
                            <strong>Email:</strong> <span class="text-muted">{{ $application->email }}</span>
                         </p>
                         <div class="d-flex justify-content-center mt-4">
-                           <form action="{{route('approve.application', ['application_id' => $application->id])}}" method="POST">
+                           <form action="{{url('/myjobs/approve' ,['application_id' => $application->id])}}" method="POST">
                               @csrf
                               <button type="submit" class="btn btn-success mr-3 px-4 py-2">Approve</button>
                            </form>
-                           <button class="btn btn-danger px-4 py-2">Decline</button>
+                           <form action="{{url('/myjobs/decline' ,['application_id' => $application->id])}}" method="POST">
+                              @csrf
+                              <button class="btn btn-danger px-4 py-2">Decline</button>
+                           </form>
                         </div>
                      </div>
                   </div>
