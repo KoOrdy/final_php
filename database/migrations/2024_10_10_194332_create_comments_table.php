@@ -20,6 +20,7 @@ return new class extends Migration
 
             //Relations with tabels
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

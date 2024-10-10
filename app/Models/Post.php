@@ -29,4 +29,10 @@ class Post extends Model
         return  $this->user_id;
     }
 
+    //Comments 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

@@ -189,10 +189,28 @@
                            @endif
                         </div>
 
+
                         <div class="p-3 border-bottom osahan-post-footer">
-                           <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
-                           <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i></a>
+                          <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i> Comment</a>
                         </div>
+                        <div class="comments">
+                          @foreach($post->comments as $comment)
+                          <div class="comments">
+                           <strong>{{$comment->user->name}}</strong>
+                           <p>{{ $comment->content }}</p>
+                          </div>
+                          @endforeach
+                        </div>
+
+                        @auth
+                        <form action="{{route('comments.store', $post->id)}}" method="POST">
+                           @csrf
+                           <div class="form-group">
+                           <textarea name="content" class="form-control" placeholder="Add a comment..." required></textarea>
+                           </div>
+                           <button type="submit" class="btn btn-primary">Comment</button>
+                        </form>
+                        @endauth
                      </div>
                   </div>
                   @endforeach
