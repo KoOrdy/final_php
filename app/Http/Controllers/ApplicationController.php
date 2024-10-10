@@ -50,7 +50,7 @@ class ApplicationController extends Controller
     {
         $application = Application::findOrFail($application_id);
 
-        Mail::to('eslam.mohamed200214@gmail.com')->send(new ApplicationApproveMail($application));
+        Mail::to($application->email)->send(new ApplicationApproveMail($application));
 
         return response()->redirectTo('/users/myjobs');
     }
@@ -59,7 +59,7 @@ class ApplicationController extends Controller
     {
         $application = Application::findOrFail($application_id);
 
-        Mail::to('eslam.mohamed200214@gmail.com')->send(new ApplicationDeclineMail($application));
+        Mail::to($application->email)->send(new ApplicationDeclineMail($application));
         
         return response()->redirectTo('/users/myjobs');
     }
