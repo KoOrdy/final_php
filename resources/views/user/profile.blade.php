@@ -60,33 +60,33 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
                <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="{{asset('img/66.png')}}">
+                  <img class="img-profile rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_picture)}}">
                </a>
                <!-- Dropdown - User Information -->
                <div class="dropdown-menu dropdown-menu-right shadow-sm">
                   <div class="p-3 d-flex align-items-center">
                      <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('img/66.png')}}" alt="">
+                        <img class="rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_picture)}}" width="35px" alt="">
                         <div class="status-indicator bg-success"></div>
                      </div>
                      <div class="font-weight-bold">
-                        <div class="text-truncate">{{$user->name}}</div>
-                        <div class="small text-gray-500">{{$user->gender}}</div>
+                        <div class="text-truncate">{{auth()->user()->name}}</div>
+                        <div class="small text-gray-500">{{auth()->user()->gender}}</div>
                      </div>
                   </div>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{url('/users/profile')}}"><i class="feather-edit mr-1"></i> My Account</a>
-                  <a class="dropdown-item" href="{{url('/users/edit-profile/'.$user->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
-                  <div class="dropdown-divider"></div> 
+                  <a class="dropdown-item" href="{{url('/users/edit-profile/'.auth()->user()->id)}}"><i class="feather-user mr-1"></i> Edit Profile</a>
+                  <div class="dropdown-divider"></div>
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
-                        @csrf
+                     @csrf
 
-                        <a href="{{route('logout')}}" class="feather-log-out mr-1"  
-                                               onclick="event.preventDefault();
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1"
+                        onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
+                        {{ __('Log Out') }}
+                     </a>
+                  </form>
                </div>
             </li>
          </ul>

@@ -92,7 +92,7 @@ class PostController extends Controller
             }
 
             $post->update($data);
-            return redirect()->url('users')->with('success', 'Post updated successfully!');
+            return redirect('/users')->with('success', 'Post updated successfully!');
 
         }
         
