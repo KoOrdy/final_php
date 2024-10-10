@@ -22,7 +22,7 @@ class PostController extends Controller
     {
         $request->validate([
             'content' => ['required','string'],
-            'image'   => ['required','image','mimes:jpeg,png,jpg,gif,webp','max:2048'],
+            'image'   => ['nullable','image','mimes:jpeg,png,jpg,gif,webp','max:2048'],
         ]);
 
         $data = [
