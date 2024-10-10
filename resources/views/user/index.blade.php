@@ -128,41 +128,42 @@
                      @csrf
                      <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                           <div class="p-3 d-flex align-items-center w-100" href="#">
-                              <div class="dropdown-list-image mr-3">
-                                 <img class="rounded-circle" src="{{  asset('storage/' . auth()->user()->profile_picture) }}" width="50px" alt="">
-                                 <div class="status-indicator bg-success"></div>
+                           <div class="p-3 d-flex align-items-center w-100">
+                              <!-- Profile Picture Section -->
+                              <div class="profile-picture position-relative me-3">
+                                 <img class="rounded-circle border" src="{{ asset('storage/' . auth()->user()->profile_picture) }}" width="50" alt="Profile Picture">
                               </div>
+
+                              <!-- Textarea for Status Update -->
                               <div class="w-100">
-                                 <textarea name="content" placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="1"></textarea>
+                                 <textarea
+                                    name="content"
+                                    placeholder="What's on your mind?"
+                                    class="form-control border-0 shadow-sm rounded-3 p-2"
+                                    rows="2"
+                                    style="resize: none; background-color: #f8f9fa;">
+        </textarea>
                               </div>
                            </div>
+
                         </div>
 
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                           <div class="p-3 w-100">
-                              <textarea placeholder="Write your thoughts..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
-                           </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                           <div class="p-3 w-100">
-                              <textarea placeholder="Write an article..." class="form-control border-0 p-0 shadow-none" rows="3"></textarea>
-                           </div>
-                        </div>
                      </div>
 
                      <div class="p-3 w-100">
-                        <label for="photo">Upload Photo:</label>
-                        <input type="file" name="image" id="photo" class="form-control">
-                     </div>
-
-                     <div class="border-top p-3 d-flex align-items-center">
-                        <div class="mr-auto"></div>
-                        <div class="flex-shrink-1">
-                           <button type="submit" class="btn btn-primary btn-sm">Post Status</button>
+                        <label for="photo" class="font-weight-bold">Upload a Photo:</label>
+                        <div class="custom-file">
+                           <input type="file" name="image" id="photo" class="custom-file-input">
+                           <label class="custom-file-label" for="photo">Choose file...</label>
                         </div>
                      </div>
+
+                     <div class="border-top p-3 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary btn-lg d-flex align-items-center">
+                           <i class="fas fa-paper-plane mr-2"></i> Post Status
+                        </button>
+                     </div>
+
                   </form>
 
                   @foreach ($users as $user)
@@ -175,14 +176,13 @@
                                  src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('default-profile.png') }}"
                                  alt="{{ $user->name }}"
                                  width="50" height="50">
-                              <div class="status-indicator bg-success"></div>
                            </div>
                            <div class="font-weight-bold">
                               <div class="text-truncate">{{ $user->name }}</div>
                            </div>
                         </div>
 
-                        
+
                         <div class="p-3 border-bottom osahan-post-body">
                            <p class="mb-0">{{ $post->content }}</p>
 
@@ -194,7 +194,6 @@
                         <div class="p-3 border-bottom osahan-post-footer">
                            <a href="#" class="mr-3 text-secondary"><i class="feather-heart text-danger"></i></a>
                            <a href="#" class="mr-3 text-secondary"><i class="feather-message-square"></i></a>
-                           <a href="#" class="mr-3 text-secondary"><i class="feather-share-2"></i></a>
                         </div>
                      </div>
                   </div>

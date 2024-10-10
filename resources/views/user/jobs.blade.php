@@ -124,14 +124,7 @@
 
                   <div class="tab-content" id="myTabContent">
                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="p-3 job-tags">
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">All</button>
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">Sales</button>
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">Design</button>
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">Products</button>
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">Developer</button>
-                           <button type="button" class="btn btn-outline-primary btn-sm mr-1">Business Analyst</button>
-                        </div>
+                        
                         <div class="p-3 border-top">
                            <div class="row">
                               <!-- Job Item Start -->

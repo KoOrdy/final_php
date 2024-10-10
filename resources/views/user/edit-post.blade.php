@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <title>Posts</title>
+   <!-- Slick Slider -->
+   <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}" />
+   <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}" />
+   <!-- Feather Icon-->
+   <link href="{{asset('vendor/icons/feather.css')}}" rel="stylesheet" type="text/css">
+   <!-- Bootstrap core CSS -->
+   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
@@ -47,7 +59,7 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow ml-1 osahan-profile-dropdown">
-               <a class="nav-link dropdown-toggle pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <a class="nav-link dropdown-toggle pr-0" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img class="img-profile rounded-circle" src="{{ asset('storage/' . auth()->user()->profile_picture)}}">
                </a>
                <!-- Dropdown - User Information -->
@@ -80,41 +92,77 @@
          </ul>
       </div>
    </nav>
+
    
-    <div class="table-responsive">
-
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+   <div class="bg-white shadow-sm border-bottom">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="align-items-center py-3">
+                  <div class="profile-center">
+                     <h2 class="font-weight-bold text-dark mb-1 mt-0 text-center">Edit my Post</h2>
+                  </div>
+               </div>
             </div>
-        @endif
+         </div>
+      </div>
+   </div>
 
-        <form action="{{url('users/update-post/' . $post->id)}}" method="post" enctype="multipart/form-data">
+   <br>
+   
+   <div class="table-responsive">
+    <!-- Error Display Section -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-            @csrf
+    <!-- Post Update Form -->
+    <form action="{{url('users/update-post/' . $post->id)}}" method="post" enctype="multipart/form-data" class="mx-auto p-4 bg-light shadow-sm rounded-3" style="max-width: 500px;">
+        @csrf
+        @method('PUT')
 
-            @method('PUT')
+        <!-- Post Content Input -->
+        <div class="form-group mb-3">
+            <label for="content" class="form-label font-weight-bold">Change Post Title</label>
+            <input 
+                type="text" 
+                name="content" 
+                id="content" 
+                class="form-control" 
+                placeholder="Enter Title" 
+                value="{{old('content', $post->content)}}" 
+                required>
+        </div>
 
+        <!-- Image Upload Input -->
+        <div class="p-3 w-100">
+                        <label for="photo" class="font-weight-bold">Change the Photo:</label>
+                        <div class="custom-file">
+                           <input type="file" name="image" id="photo" class="custom-file-input">
+                           <label class="custom-file-label" for="photo">Choose file...</label>
+                        </div>
+                     </div>
 
-            <input type="text" name="content" class="form-control" placeholder="Enter Title" value="{{old('content',$post->content)}}">
-            <br>
-            <input type="file" name="image" class="form-control">
-            <br>
-            <img src="{{asset('/storage/' . $post->image)}}" width="200" />
-            <br>
-            <br>
-            <button class="btn btn-primary">
-                Add
-            </button> 
+        <!-- Display Existing Image -->
+        <div class="text-center mb-4">
+            <img src="{{asset('/storage/' . $post->image)}}" class="img-fluid rounded" width="200" alt="Post Image">
+        </div>
 
-        </form>
+        <!-- Submit Button -->
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Update Post
+            </button>
+        </div>
+    </form>
+</div>
 
-    </div>
 </body>
 </html>
 
