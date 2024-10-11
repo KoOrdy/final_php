@@ -10,7 +10,6 @@ class CommentController extends Controller
 {
     public function store(Request $request, $postId)
 {
-    // Validate the request
     $request->validate([
         'content' => 'required|string',
     ]);
@@ -22,13 +21,21 @@ class CommentController extends Controller
         'content' => $request->input('content'),
     ]);
 
-    // Return JSON response for AJAX
+    // Retrieve the user's name and formatted timestamp
+    $userName = Auth::user()->name;
+    $createdAt = $comment->created_at->diffForHumans(); // or use format() for a specific date format
+
+    // Return a JSON response
     return response()->json([
         'success' => true,
-        'message' => 'Comment added successfully!',
-        'comment' => $comment,
-        'user' => Auth::user()->name, // Return the user name
+        'user' => $userName,
+        'comment' => [
+            'content' => $comment->content,
+            'created_at' => $createdAt
+        ]
     ]);
 }
+
+
 
 }

@@ -129,16 +129,18 @@
                               </div>
 
                               <div class="w-100">
-                                 <label for='text' class="font-weight-bold">What is on your mind:</label>
-                                 <textarea
-                                    id="text"
-                                    name="content"
-                                    placeholder="What's on your mind?"
-                                    class="form-control border-0 shadow-sm rounded-3 p-2"
-                                    rows="2"
-                                    style="resize: none;">
-                                 </textarea>
-                              </div>
+    <label for="text" class="font-weight-bold">What is on your mind:</label>
+    <textarea
+        id="text"
+        name="content"
+        placeholder="What's on your mind?"
+        class="form-control border-0 shadow-sm rounded-3 p-2"
+        rows="2"
+        style="resize: none; padding: 0.5rem;">
+    </textarea>
+</div>
+
+
                            </div>
 
                         </div>
@@ -146,18 +148,18 @@
                      </div>
 
                      <div class="p-3 w-100">
-    <label for="photo" class="font-weight-bold text-primary">Upload a Photo:</label>
-    <div class="custom-file">
-        <input type="file" name="image" id="photo" class="custom-file-input" onchange="updateFileName()">
-        <label class="custom-file-label" for="photo">Choose file...</label>
-    </div>
-</div>
+                        <label for="photo" class="font-weight-bold text-primary">Upload a Photo:</label>
+                        <div class="custom-file">
+                           <input type="file" name="image" id="photo" class="custom-file-input" onchange="updateFileName()">
+                           <label class="custom-file-label" for="photo">Choose file...</label>
+                        </div>
+                     </div>
 
-<div class="border-top p-3 d-flex justify-content-end">
-    <button type="submit" class="btn btn-modern-blue btn d-flex align-items-center">
-        <i class="fas fa-paper-plane mr-2"></i> Post Status
-    </button>
-</div>
+                     <div class="border-top p-3 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-modern-blue btn d-flex align-items-center">
+                           <i class="fas fa-paper-plane mr-2"></i> Post Status
+                        </button>
+                     </div>
 
 
 
@@ -200,7 +202,7 @@
 
                         <div class="comments-section" style="display: none;">
                            @foreach($post->comments as $comment)
-                           <div class="comment-box p-3 mb-3 rounded shadow-sm bg-light">
+                           <div class="comments p-3 border rounded mb-2 shadow-sm">
                               <div class="d-flex align-items-center mb-2">
                                  <div class="comment-author mr-2 font-weight-bold text-primary">
                                     {{ $comment->user->name }}
@@ -212,6 +214,7 @@
                               </p>
                            </div>
                            @endforeach
+
 
 
                            @auth

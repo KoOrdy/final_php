@@ -6,13 +6,29 @@
   transition: opacity 0.3s ease;
 }
 
-.comments {
-  margin-bottom: 15px;
+
+
+.comment-author {
+  font-weight: bold; /* Bold text for author's name */
+  color: #007bff; /* Primary color for author's name */
 }
 
+.comment-content {
+  color: #6c757d; /* Muted text color for comment content */
+}
+
+.text-muted {
+  color: #6c757d !important; /* Ensure muted text appears muted */
+}
+
+
 .comments strong {
-  color: #007bff;
-  font-size: 1.1em;
+  display: block; /* Ensures the name appears on a new line */
+  font-size: 1.1rem; /* Adjust font size for the name */
+}
+
+.comments small {
+  color: #6c757d; /* Muted color for timestamp */
 }
 
 textarea.form-control {
@@ -41,19 +57,7 @@ button.btn-primary:hover {
   background-color: #f1f1f1; /* Change background on hover */
 }
 
-.comment-author {
-  font-size: 1rem; /* Slightly larger for visibility */
-  color: #007bff; /* Primary color for author name */
-}
 
-.comment-content {
-  font-size: 0.95rem; /* Slightly smaller font for comment */
-  line-height: 1.5;
-}
-
-.text-muted {
-  font-size: 0.85rem; /* Make the timestamp smaller */
-}
 
 .shadow-sm {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
@@ -109,4 +113,16 @@ button.btn-primary:hover {
 .btn-modern-blue:active {
   transform: scale(0.97);
   box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+
+textarea {
+  padding: 0.5rem;   /* Adds padding */
+  height: auto;      /* Adjust height automatically */
+  line-height: 1.5;  /* Improve readability */
+}
+
+textarea::placeholder {
+  color: #020000;       /* Placeholder text color */
+  opacity: 1;        /* Fully opaque */
 }
