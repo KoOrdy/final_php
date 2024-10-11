@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::post('myjobs/decline/{application_id}', [ApplicationController::class, 'decline' ])->name('myjobs.decline');
 
     Route::post('/comments/{post}', [CommentController::class, 'store'])->name('comments.store');
+    Route::get('users/delete-comment/{id}', [CommentController::class, 'deleteComment' ])->name('users.edit');
 });
 
 require __DIR__.'/auth.php';

@@ -14,18 +14,15 @@ class CommentController extends Controller
         'content' => 'required|string',
     ]);
 
-    // Create the comment
     $comment = Comment::create([
         'post_id' => $postId,
         'user_id' => Auth::user()->id,
         'content' => $request->input('content'),
     ]);
 
-    // Retrieve the user's name and formatted timestamp
     $userName = Auth::user()->name;
-    $createdAt = $comment->created_at->diffForHumans(); // or use format() for a specific date format
+    $createdAt = $comment->created_at->diffForHumans(); 
 
-    // Return a JSON response
     return response()->json([
         'success' => true,
         'user' => $userName,
@@ -35,6 +32,15 @@ class CommentController extends Controller
         ]
     ]);
 }
+
+    public function deleteComment($id){
+        $comment = Comment::find($id);
+        if($comment){
+            $comment->delete();
+            
+        }
+        return redirect()->back()->with('success', 'Comment deleted successfully');
+    }
 
 
 
