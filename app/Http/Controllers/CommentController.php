@@ -9,17 +9,26 @@ use App\Models\Comment;
 class CommentController extends Controller
 {
     public function store(Request $request, $postId)
-    {
-        $request->validate([
-            'content' => 'required|string',
-        ]);
+{
+    // Validate the request
+    $request->validate([
+        'content' => 'required|string',
+    ]);
 
-        Comment::create([
-            'post_id' => $postId,
-            'user_id' => Auth::user()->id,
-            'content' => $request->input('content'),
-        ]);
+    // Create the comment
+    $comment = Comment::create([
+        'post_id' => $postId,
+        'user_id' => Auth::user()->id,
+        'content' => $request->input('content'),
+    ]);
 
-        return back()->with('success', 'Comment added successfully!');
-    }
+    // Return JSON response for AJAX
+    return response()->json([
+        'success' => true,
+        'message' => 'Comment added successfully!',
+        'comment' => $comment,
+        'user' => Auth::user()->name, // Return the user name
+    ]);
+}
+
 }

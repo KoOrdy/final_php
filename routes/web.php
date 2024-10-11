@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::post('myjobs/approve/{application_id}', [ApplicationController::class, 'approve' ])->name('myjobs.approve');
     Route::post('myjobs/decline/{application_id}', [ApplicationController::class, 'decline' ])->name('myjobs.decline');
 
-    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/comments/{post}', [CommentController::class, 'store'])->name('comments.store');
 });
 
 require __DIR__.'/auth.php';
