@@ -132,7 +132,7 @@
                               </div>
 
                               <div class="w-100">
-                                 <label for='text' class="font-weight-bold">What is in your mind:</label>
+                                 <label for='text' class="font-weight-bold">What is on your mind:</label>
                                  <textarea
                                     id="text"
                                     name="content"
