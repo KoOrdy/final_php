@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Mail\ApplicationMail;
 use App\Models\Application;
@@ -56,8 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/users/store', [PostController::class, 'store'])->name('posts.store');
     Route::get('/users/{user_id}', [PostController::class, 'index'])->name('posts.index');
 
-    // Route::get('/users/{id}', [UserController::class, 'index'])->name('user.index');
-
+    
     Route::get('/users', [PostController::class, 'index'])->name('posts.index');
     Route::get('/users/edit-profile/delete-post/{id}', [PostController::class, 'deletePost']);
     Route::get('users/edit-post/{id}', [PostController::class, 'editPost' ])->name('users.editPost');
@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('myjobs/approve/{application_id}', [ApplicationController::class, 'approve' ])->name('myjobs.approve');
     Route::post('myjobs/decline/{application_id}', [ApplicationController::class, 'decline' ])->name('myjobs.decline');
+
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
 
 require __DIR__.'/auth.php';

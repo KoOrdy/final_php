@@ -60,5 +60,10 @@ class User extends Authenticatable
         return $this->hasMany(related: Job::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     
 }
