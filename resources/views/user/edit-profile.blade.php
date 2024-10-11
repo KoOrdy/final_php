@@ -87,7 +87,7 @@
                   <form method="POST" action="{{ route('logout') }}" class="dropdown-item">
                      @csrf
 
-                     <a href="{{route('logout')}}" class="feather-log-out mr-1 font-weight-bold d-block"
+                     <a href="{{route('logout')}}" class="feather-log-out mr-1 font-weight-bold d-block dropdown-item"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
