@@ -7,6 +7,9 @@
    <meta name="description" content="">
    <meta name="author" content="">
    <title>Edit - Post</title>
+   <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
+  
+
    <!-- Slick Slider -->
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}" />
@@ -16,12 +19,15 @@
    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
    <!-- Custom styles for this template -->
    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+   <link href="{{asset('css/logo.css')}}" rel="stylesheet">
    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+   
 </head>
 <body>
 <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
       <div class="container">
-         <a class="navbar-brand mr-2" href="{{url('/users')}}">
+         <a class="navbar-brand mr-2" href="{{url('/')}}">
          <h1 class="title">LinkedOut</h1>
          </a>
          <ul class="navbar-nav ml-auto d-flex align-items-center">

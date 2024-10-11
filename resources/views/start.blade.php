@@ -5,10 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedOut</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
         rel="stylesheet" />
     <style>
+        .title {
+            display: block;
+            /* Ensure the image is a block element */
+            width: 80%;
+            /* Adjust this percentage to make the image smaller */
+            max-width: 300px;
+            /* Set a maximum width */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin: 0;
+            /* Remove any default margin */
+            padding: 0;
+            /* Remove any padding */
+            font-size: 3rem;
+            /* Large font size */
+            font-weight: bold;
+            /* Bold font */
+            color: #343a40;
+            /* Dark text color */
+            text-align: center;
+            /* Center alignment */
+            animation: fadeIn 1s ease-in-out, bounce 2s infinite;
+            /* Animation effects */
+        }
+
+        .navbar {
+            margin-top: 0;
+            /* Ensure no margin at the top of the navbar */
+        }
+
         body {
             background-color: #f8f9fa;
             /* Light background color */
@@ -53,20 +84,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        .title {
-            font-size: 3rem;
-            /* Large font size */
-            font-weight: bold;
-            /* Bold font */
-            color: #343a40;
-            /* Dark text color */
-            text-align: center;
-            /* Center alignment */
-            margin-bottom: 2rem;
-            /* Spacing below the title */
-            animation: fadeIn 1s ease-in-out, bounce 2s infinite;
-            /* Animation effects */
-        }
+       
 
         @keyframes fadeIn {
             0% {
@@ -109,20 +127,16 @@
 <body class="bg-light">
 
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
-        <h1 class="title">LinkedOut</h1> <!-- Big title with animation -->
-        <nav class="navbar navbar-light bg-light p-4 shadow-sm rounded">
+        <img class="title" src="{{ asset('img/logo.png') }}" alt="LinkedOut">
+        <nav class="navbar navbar-light bg-light p-4 shadow-sm rounded mt-0">
             <div class="container-fluid justify-content-center">
-                <!-- Exact Blade code for login, register, and dashboard -->
                 @if (Route::has('login'))
                 <nav class="-mx-3 flex flex-1 justify-end">
                     @auth
                     <div class="d-flex justify-content-center align-items-center">
-                        <!-- First Button: Enter Here -->
                         <a href="{{ url('/users') }}" class="btn btn-custom" style="margin-right: 20px;">
                             Enter Here
                         </a>
-
-                        <!-- Second Button: Log Out -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a href="{{ route('logout') }}" class="btn btn-danger"
@@ -131,20 +145,10 @@
                             </a>
                         </form>
                     </div>
-
                     @else
-                    <a
-                        href="{{ route('login') }}"
-                        class="btn btn-custom">
-                        Log in
-                    </a>
-
+                    <a href="{{ route('login') }}" class="btn btn-custom">Log in</a>
                     @if (Route::has('register'))
-                    <a
-                        href="{{ route('register') }}"
-                        class="btn btn-custom ms-2">
-                        Register
-                    </a>
+                    <a href="{{ route('register') }}" class="btn btn-custom ms-2">Register</a>
                     @endif
                     @endauth
                 </nav>
@@ -155,5 +159,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
 
 </html>

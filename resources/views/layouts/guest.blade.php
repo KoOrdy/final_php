@@ -16,12 +16,31 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .title {
-            font-size: 3rem; /* Large font size */
-            font-weight: bold; /* Bold font */
-            text-align: center; /* Center alignment */
-            margin-bottom: 2rem; /* Spacing below the title */
-            animation: fadeIn 1s ease-in-out, bounce 2s infinite; /* Animation effects */
+            display: block;
+            /* Ensure the image is a block element */
+            width: 80%;
+            /* Adjust this percentage to make the image smaller */
+            max-width: 300px;
+            /* Set a maximum width */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin: 0;
+            /* Remove any default margin */
+            padding: 0;
+            /* Remove any padding */
+            font-size: 3rem;
+            /* Large font size */
+            font-weight: bold;
+            /* Bold font */
+            color: #343a40;
+            /* Dark text color */
+            text-align: center;
+            /* Center alignment */
+            animation: fadeIn 1s ease-in-out, bounce 2s infinite;
+            /* Animation effects */
         }
+
+       
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -51,7 +70,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
         <div>
             <a href="/" class="text-3xl font-bold text-gray-500">
-                <h1 class="title">LinkedOut</h1>
+            <img class="title" src="{{ asset('img/logo.png') }}" alt="LinkedOut">
             </a>
         </div>
 

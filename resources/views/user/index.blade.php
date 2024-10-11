@@ -7,22 +7,27 @@
    <meta name="description" content="">
    <meta name="author" content="">
    <title>Posts</title>
+   <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.min.css')}}" />
    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick-theme.min.css')}}" />
    <link href="{{asset('vendor/icons/feather.css')}}" rel="stylesheet" type="text/css">
    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
    <link href="{{asset('css/posts.css')}}" rel="stylesheet">
+   <link href="{{asset('css/logo.css')}}" rel="stylesheet">
+   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
    <nav class="navbar navbar-expand navbar-light osahan-nav-top p-0" id="header">
       <div class="container">
-         <a class="navbar-brand mr-2" href="{{url('/users')}}">
+         <a class="navbar-brand mr-2" href="{{url('/')}}">
             <h1 class="title">LinkedOut</h1>
          </a>
+         
          <ul class="navbar-nav ml-auto d-flex align-items-center">
 
             <li class="nav-item dropdown no-arrow d-sm-none">
@@ -99,6 +104,7 @@
                   <ul class="nav nav-justified border-bottom osahan-line-tab" id="myTab" role="tablist">
                      <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="feather-edit"></i> Share an update</a>
+                        
                      </li>
 
                   </ul>

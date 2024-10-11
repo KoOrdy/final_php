@@ -54,6 +54,7 @@
 
 
 
+
 /* AD banner css */
 .clearfix:after {
     content: "";
@@ -98,37 +99,6 @@
     border: solid thin #ddd;
     box-shadow: 0px 5px 9px 2px #ddd;
 }
-
-
-.title {
-    font-weight: bold; /* Bold font */
-    color: #343a40; /* Dark text color */
-    animation: fadeIn 1s ease-in-out, bounce 2s infinite; /* Animation effects */
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px); /* Move title up */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* Reset position */
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0); /* Normal position */
-    }
-    40% {
-        transform: translateY(-10px); /* Move up */
-    }
-    60% {
-        transform: translateY(-5px); /* Move slightly up */
-    }
-}
-
 
 
 
