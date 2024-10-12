@@ -71,7 +71,7 @@ npm run dev
 ## 👩‍💻 Authors
 
 - [@islam-vz7](https://github.com/Islam-vz7)
-- [@elkordy-joo](https://github.com/elkordy-joo)
+- [@KoOrdy](https://github.com/KoOrdy)
 - [@ahmedgamal1200](https://github.com/ahmedgamal1200)
 
 ---
